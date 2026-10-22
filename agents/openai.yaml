@@ -1,0 +1,4 @@
+interface:
+  display_name: "easyunslop · 学术表达精修"
+  short_description: "精修论文与专业文字中的模板化表达，保留原意、术语、证据强度和学术语域"
+  default_prompt: "请用 $easyunslop 修改以下文字中的 AI 腔和冗余表达，保持专业性、学术规范、原意与证据强度；清楚的地方可以保留，直接给出正文。"

@@ -1,0 +1,905 @@
+{
+  "version": 1,
+  "sources": {
+    "editing-patterns": {
+      "title": "EasyUnslop 按语境编辑的词句模式",
+      "url": "editing-patterns.md",
+      "evidence": "editorial-pattern"
+    },
+    "juzek-ward-2025": {
+      "title": "Why Does ChatGPT Delve So Much? COLING 2025；研究含 ChatGPT-3.5 科学写作样本",
+      "url": "https://aclanthology.org/2025.coling-main.426/",
+      "evidence": "published-corpus-study"
+    },
+    "claude-issue-53454": {
+      "title": "Claude Code 用户报告 load-bearing 重复，单项社区观察",
+      "url": "https://github.com/anthropics/claude-code/issues/53454",
+      "evidence": "community-report"
+    },
+    "scansci-local-202609": {
+      "title": "scansci-write 2026-09-15 本地偏好和探索性观察；并非稳定模型词频结论",
+      "url": "sources.md#词汇统计与候选词库",
+      "evidence": "local-editorial-observation"
+    }
+  },
+  "entries": [
+    {
+      "id": "ZH01",
+      "lang": "zh",
+      "forms": [
+        "值得注意的是",
+        "需要指出的是"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查后文是否需要特别提醒；普通结果可直接陈述。",
+      "preserve": "关键例外、反常结果或真实章节转换所需的提醒。"
+    },
+    {
+      "id": "ZH02",
+      "lang": "zh",
+      "forms": [
+        "从结果层面来看",
+        "从比较结果的层面来看"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否为空泛引导语；保留随后已有的比较。",
+      "preserve": "确实区分结果层次与另一分析层次的角度限定。"
+    },
+    {
+      "id": "ZH03",
+      "lang": "zh",
+      "forms": [
+        "在当今",
+        "日新月异"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否是与研究问题无关的时代背景。",
+      "preserve": "研究时期、历史语境或文献原话。"
+    },
+    {
+      "id": "ZH04",
+      "lang": "zh",
+      "forms": [
+        "赋能"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "用稿内已有功能、操作或关系说明主张。",
+      "preserve": "被研究的话语原词或作者明确界定的概念。"
+    },
+    {
+      "id": "ZH05",
+      "lang": "zh",
+      "forms": [
+        "抓手",
+        "底座"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否以比喻替代了具体工具、基础或条件。",
+      "preserve": "设备部件、已定义的技术结构或引语。"
+    },
+    {
+      "id": "ZH06",
+      "lang": "zh",
+      "forms": [
+        "闭环"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否交代了反馈对象、过程或已定义含义。",
+      "preserve": "控制系统闭环、闭环实验及其他固定专业用法。"
+    },
+    {
+      "id": "ZH07",
+      "lang": "zh",
+      "forms": [
+        "打通"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否能用稿内已说明的连接或互操作表达。",
+      "preserve": "临床、工程等语境中的实际操作或引用原话。"
+    },
+    {
+      "id": "ZH08",
+      "lang": "zh",
+      "forms": [
+        "多维度",
+        "全方位"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查所列维度或覆盖范围是否具体，是否重复强调。",
+      "preserve": "多维模型、真实多维分析及有依据的范围主张。"
+    },
+    {
+      "id": "ZH09",
+      "lang": "zh",
+      "forms": [
+        "颠覆性",
+        "革命性"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否为重复的评价，是否属于作者实质主张。",
+      "preserve": "作者有依据的贡献判断、历史讨论或引语；不得静默改弱主张。"
+    },
+    {
+      "id": "ZH10",
+      "lang": "zh",
+      "forms": [
+        "系统性"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否只是无信息的褒义修饰。",
+      "preserve": "系统性误差、系统综述、系统性风险等专业含义。"
+    },
+    {
+      "id": "ZH11",
+      "lang": "zh",
+      "forms": [
+        "深入探讨",
+        "深入剖析"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否可直接陈述所研究的问题和已有分析。",
+      "preserve": "分析深度本身是被讨论对象或引用原话。"
+    },
+    {
+      "id": "ZH12",
+      "lang": "zh",
+      "forms": [
+        "充分体现",
+        "深刻揭示"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "核对谓语与证据对象，检查是否重复评价。",
+      "preserve": "作者已经提出且有材料支持的解释或评价；不能自动降格。"
+    },
+    {
+      "id": "ZH13",
+      "lang": "zh",
+      "forms": [
+        "重要启示",
+        "重大意义"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "将已有具体发现与意义判断放近，删去重复表态。",
+      "preserve": "实质性的理论评价、价值判断和贡献范围。"
+    },
+    {
+      "id": "ZH14",
+      "lang": "zh",
+      "forms": [
+        "不可或缺"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "核对是否主张必要条件，或仅是重复称赞。",
+      "preserve": "数学、逻辑或理论中的必要性断言，保留其强度。"
+    },
+    {
+      "id": "ZH15",
+      "lang": "zh",
+      "forms": [
+        "强有力的支撑"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查支撑对象及依据是否具体，是否与前文重复。",
+      "preserve": "作者已有的证据评价；语言编辑不自行改变证据强度。"
+    },
+    {
+      "id": "ZH16",
+      "lang": "zh",
+      "forms": [
+        "奠定坚实基础"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否能由稿内已有结果具体说明。",
+      "preserve": "确有后续依赖关系的科学论断或历史引语。"
+    },
+    {
+      "id": "ZH17",
+      "lang": "zh",
+      "forms": [
+        "可能或许",
+        "进一步继续"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "分别检查限定是否同义，合并无信息的叠加。",
+      "preserve": "时间、条件、知识和程度各有限定时分别保留。"
+    },
+    {
+      "id": "ZH18",
+      "lang": "zh",
+      "forms": [
+        "综上所述",
+        "总而言之"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否重复复述或机械收尾。",
+      "preserve": "确实承担论证归纳、章节收束和必要承接。"
+    },
+    {
+      "id": "ZH19",
+      "lang": "zh",
+      "forms": [
+        "此外",
+        "与此同时"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查段间是否存在所表达的增补或同时关系。",
+      "preserve": "真实逻辑或时间关系；命中不等于删除。"
+    },
+    {
+      "id": "ZH20",
+      "lang": "zh",
+      "forms": [
+        "首先",
+        "其次",
+        "最后"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查列表是否强行凑数、开头是否机械重复。",
+      "preserve": "实际步骤顺序、证明结构、真实分类和清楚的导航。"
+    },
+    {
+      "id": "ZH21",
+      "lang": "zh",
+      "forms": [
+        "本质上",
+        "某种意义上"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否有明确分析角度或概念层次。",
+      "preserve": "实质性的本质判断、视角限定或作者已有理论命题。"
+    },
+    {
+      "id": "ZH22",
+      "lang": "zh",
+      "forms": [
+        "某种程度上"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查程度是否有语义作用，是否与其他限定重复。",
+      "preserve": "原稿确实表达不完全、范围或程度限定时保留。"
+    },
+    {
+      "id": "ZH23",
+      "lang": "zh",
+      "forms": [
+        "范式"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "核对是否指明了具体研究或理论框架。",
+      "preserve": "科学史、方法论和学科中已经界定的范式。"
+    },
+    {
+      "id": "ZH24",
+      "lang": "zh",
+      "forms": [
+        "维度"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "核对是否指实际变量、分析角度或空泛包装。",
+      "preserve": "数学维数、测量维度、构念维度等专业含义。"
+    },
+    {
+      "id": "ZH25",
+      "lang": "zh",
+      "forms": [
+        "为读者提供",
+        "希望对你有所帮助"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "检查是否是误入论文正文的聊天或服务性结尾。",
+      "preserve": "README、教学说明及原稿确实面对读者的说明。"
+    },
+    {
+      "id": "EN01",
+      "lang": "en",
+      "forms": [
+        "utilize",
+        "utilizes",
+        "utilized",
+        "utilizing"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether a direct verb fits the action already reported.",
+      "preserve": "Established terminology or a deliberate distinction from simple use."
+    },
+    {
+      "id": "EN02",
+      "lang": "en",
+      "forms": [
+        "leverage",
+        "leverages",
+        "leveraged",
+        "leveraging"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the actual use or dependency is specified.",
+      "preserve": "Financial leverage, leverage points, statistical leverage, or a defined technical meaning."
+    },
+    {
+      "id": "EN03",
+      "lang": "en",
+      "forms": [
+        "facilitate",
+        "facilitates",
+        "facilitated",
+        "facilitating"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check that the facilitating relationship has a clear object.",
+      "preserve": "A scientifically meaningful facilitation claim already made by the author."
+    },
+    {
+      "id": "EN04",
+      "lang": "en",
+      "forms": [
+        "comprehensive"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether scope is specified and the adjective adds information.",
+      "preserve": "An explicit coverage claim, fixed term, or source quotation."
+    },
+    {
+      "id": "EN05",
+      "lang": "en",
+      "forms": [
+        "robust"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether robustness names an assessed property or adds empty praise.",
+      "preserve": "Robust estimation, robust regression, reported sensitivity findings, or an existing robustness claim."
+    },
+    {
+      "id": "EN06",
+      "lang": "en",
+      "forms": [
+        "systematic"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the word states a method or merely intensifies praise.",
+      "preserve": "Systematic review, systematic error, systematic sampling, or a genuine methodological property."
+    },
+    {
+      "id": "EN07",
+      "lang": "en",
+      "forms": [
+        "multifaceted",
+        "holistic"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the stated dimensions or scope are explained.",
+      "preserve": "A defined theoretical concept or an existing substantive scope claim."
+    },
+    {
+      "id": "EN08",
+      "lang": "en",
+      "forms": [
+        "paradigm"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check that the referenced framework is identifiable.",
+      "preserve": "Disciplinary paradigms, experimental paradigms, or an attributed theoretical claim."
+    },
+    {
+      "id": "EN09",
+      "lang": "en",
+      "forms": [
+        "landscape"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the metaphor obscures a concrete object.",
+      "preserve": "Landscape ecology, energy landscapes, geographical objects, or a defined scientific concept."
+    },
+    {
+      "id": "EN10",
+      "lang": "en",
+      "forms": [
+        "tapestry"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether decorative metaphor replaces a specific relationship.",
+      "preserve": "Textile research, a named work, quoted speech, or the author's purposeful metaphor."
+    },
+    {
+      "id": "EN11",
+      "lang": "en",
+      "forms": [
+        "synergy",
+        "synergistic"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether interaction has been defined or demonstrated in the supplied text.",
+      "preserve": "Pharmacological synergy, specified interaction effects, or the author's existing claim."
+    },
+    {
+      "id": "EN12",
+      "lang": "en",
+      "forms": [
+        "a testament to"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the phrase repeats an assessment rather than explaining support.",
+      "preserve": "Quoted material or an authorial assessment carrying substantive meaning."
+    },
+    {
+      "id": "EN13",
+      "lang": "en",
+      "forms": [
+        "pivotal",
+        "crucial"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the importance judgment is specific and nonredundant.",
+      "preserve": "A meaningful centrality or necessity judgment already made by the author."
+    },
+    {
+      "id": "EN14",
+      "lang": "en",
+      "forms": [
+        "seamless"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether a concrete integration property is specified.",
+      "preserve": "A measured interface property, manufacturing term, or quoted description."
+    },
+    {
+      "id": "EN15",
+      "lang": "en",
+      "forms": [
+        "groundbreaking",
+        "innovative"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the wording repeats a contribution already stated.",
+      "preserve": "An existing, substantive novelty claim; do not silently weaken the author's claim."
+    },
+    {
+      "id": "EN16",
+      "lang": "en",
+      "forms": [
+        "novel"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether novelty has a clear referent.",
+      "preserve": "A scientific novelty claim, literary noun, or fixed term."
+    },
+    {
+      "id": "EN17",
+      "lang": "en",
+      "forms": [
+        "notably",
+        "importantly"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the signpost identifies a genuine exception or emphasis.",
+      "preserve": "An actual contrast, exception, or meaningful authorial emphasis."
+    },
+    {
+      "id": "EN18",
+      "lang": "en",
+      "forms": [
+        "it is worth noting that",
+        "it is important to note that"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the following statement needs the prefatory wording.",
+      "preserve": "A genuine warning, qualification, or transition necessary for interpretation."
+    },
+    {
+      "id": "EN19",
+      "lang": "en",
+      "forms": [
+        "in conclusion",
+        "to summarize"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the sentence contributes a synthesis.",
+      "preserve": "A purposeful conclusion or section signpost."
+    },
+    {
+      "id": "EN20",
+      "lang": "en",
+      "forms": [
+        "furthermore",
+        "moreover",
+        "additionally"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check for repetitive transitions and the actual relation between claims.",
+      "preserve": "A functional addition connecting distinct propositions."
+    },
+    {
+      "id": "EN21",
+      "lang": "en",
+      "forms": [
+        "enhance",
+        "enhances",
+        "enhanced",
+        "enhancing"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check the reported object and strength of the improvement claim.",
+      "preserve": "A specific measured or author-stated improvement, including technical terminology."
+    },
+    {
+      "id": "EN22",
+      "lang": "en",
+      "forms": [
+        "significant",
+        "significantly"
+      ],
+      "profiles": [
+        "general"
+      ],
+      "sources": [
+        "editing-patterns"
+      ],
+      "review": "Check whether the term refers to statistical evidence or an authorial judgment.",
+      "preserve": "A statistical result or a meaningful importance judgment; do not delete its qualification."
+    },
+    {
+      "id": "P01",
+      "lang": "en",
+      "forms": [
+        "delve",
+        "delves",
+        "delved",
+        "delving"
+      ],
+      "profiles": [
+        "general",
+        "chatgpt-3.5-study"
+      ],
+      "sources": [
+        "juzek-ward-2025"
+      ],
+      "review": "Literature-derived candidate: inspect repetition and whether the verb or modifier precisely describes the supplied analysis. Inflected forms are included for scanning, not separate published frequency estimates.",
+      "preserve": "A precise disciplinary use, an authorial choice that improves meaning, or a quotation. The study concerns historical scientific-writing samples, not all model versions."
+    },
+    {
+      "id": "P02",
+      "lang": "en",
+      "forms": [
+        "intricate",
+        "intricately"
+      ],
+      "profiles": [
+        "general",
+        "chatgpt-3.5-study"
+      ],
+      "sources": [
+        "juzek-ward-2025"
+      ],
+      "review": "Literature-derived candidate: inspect repetition and whether the verb or modifier precisely describes the supplied analysis. Inflected forms are included for scanning, not separate published frequency estimates.",
+      "preserve": "A precise disciplinary use, an authorial choice that improves meaning, or a quotation. The study concerns historical scientific-writing samples, not all model versions."
+    },
+    {
+      "id": "P03",
+      "lang": "en",
+      "forms": [
+        "underscore",
+        "underscores",
+        "underscored",
+        "underscoring"
+      ],
+      "profiles": [
+        "general",
+        "chatgpt-3.5-study"
+      ],
+      "sources": [
+        "juzek-ward-2025"
+      ],
+      "review": "Literature-derived candidate: inspect repetition and whether the verb or modifier precisely describes the supplied analysis. Inflected forms are included for scanning, not separate published frequency estimates.",
+      "preserve": "A precise disciplinary use, an authorial choice that improves meaning, or a quotation. The study concerns historical scientific-writing samples, not all model versions."
+    },
+    {
+      "id": "C01",
+      "lang": "en",
+      "forms": [
+        "load-bearing"
+      ],
+      "profiles": [
+        "claude-community"
+      ],
+      "sources": [
+        "claude-issue-53454"
+      ],
+      "review": "A community report describes repeated metaphorical use; inspect whether the metaphor adds information.",
+      "preserve": "Actual structural engineering, load-bearing anatomy or construction, quotations, or an intentional authorial metaphor."
+    },
+    {
+      "id": "L01",
+      "lang": "zh",
+      "forms": [
+        "链条",
+        "骨架"
+      ],
+      "profiles": [
+        "glm-local-202609"
+      ],
+      "sources": [
+        "scansci-local-202609"
+      ],
+      "review": "本项目小样本与作者偏好线索，检查比喻或评价是否空泛；不推定为整个GLM系列的统计特征。",
+      "preserve": "生物链、分子骨架、机械结构、已有理论定义或引语。"
+    },
+    {
+      "id": "L02",
+      "lang": "zh",
+      "forms": [
+        "锚点",
+        "落点"
+      ],
+      "profiles": [
+        "glm-local-202609"
+      ],
+      "sources": [
+        "scansci-local-202609"
+      ],
+      "review": "本项目小样本与作者偏好线索，检查比喻或评价是否空泛；不推定为整个GLM系列的统计特征。",
+      "preserve": "地理定位、测量锚定、技术结构或作者准确表达。"
+    },
+    {
+      "id": "L03",
+      "lang": "zh",
+      "forms": [
+        "撑起",
+        "撑得住",
+        "兜住"
+      ],
+      "profiles": [
+        "glm-local-202609"
+      ],
+      "sources": [
+        "scansci-local-202609"
+      ],
+      "review": "本项目小样本与作者偏好线索，检查比喻或评价是否空泛；不推定为整个GLM系列的统计特征。",
+      "preserve": "真实动作、引语或作者明确选择且有含义的表达。"
+    },
+    {
+      "id": "L04",
+      "lang": "zh",
+      "forms": [
+        "稳",
+        "克制"
+      ],
+      "profiles": [
+        "glm-local-202609"
+      ],
+      "sources": [
+        "scansci-local-202609"
+      ],
+      "review": "本项目小样本与作者偏好线索，检查比喻或评价是否空泛；不推定为整个GLM系列的统计特征。",
+      "preserve": "稳定性等专业意义、测量属性、作者风格或实质评价。"
+    }
+  ]
+}

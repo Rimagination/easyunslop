@@ -8,14 +8,14 @@ easyunslop 从 scansci-write 的语言修订规则中抽出独立入口，新增
 
 | 项目与核读原文 | 已明确考虑的部分 | 本技能的取舍 |
 |---|---|---|
-| [Humanizer-zh](https://github.com/op7418/humanizer-zh/blob/main/SKILL.md) | 明确要求学术等事实性文体保留正式程度、归因、限定和论证结构；认可被动句、名词化及有功能的连接。 | 采用文体优先和清楚处可保留的判断，将学术语域设为默认，而非多种可选语气之一。 |
+| [Humanizer-zh](https://github.com/op7418/humanizer-zh/blob/main/SKILL.md) | 明确要求学术等事实性文体保留正式程度、归因、限定和论证结构；认可被动句、名词化及有功能的连接。 | 采用文体优先和清楚处可保留的判断，学术稿件保持学术语域，其他专业文本按具体用途编辑。 |
 | [qu-ai-wei 主入口](https://github.com/LifelongLazyLearner/qu-ai-wei/blob/main/SKILL.md) 与 [编辑边界](https://github.com/LifelongLazyLearner/qu-ai-wei/blob/main/references/editing-boundaries.md) | 保护原意、证据强度、语域和作者声音；保护必要的术语与名词化，不强加口语、幽默或个人经历。 | 采用概念、语域和力度核对。保持轻量交付，不要求每次生成诊断报告或编辑历史。 |
 | [academic-writing-refiner](https://github.com/Zihan-Zhu/academic-writing-refiner/blob/main/academic-writing-refiner/SKILL.md) | 面向计算机领域学术写作，结合章节、目标场合选择表达；主动和被动依用途取舍。 | 采用表达精确、修改幅度适配等原则；计算机会议的篇幅与章节偏好不推广为全学科规则。 |
 | [blader/humanizer](https://github.com/blader/humanizer/blob/main/SKILL.md) | 当前版本区分文体，保护事实；认可技术词的正当用途及事实性写作的中性语气。 | 词表只提供检查线索，不逐词触发改写；避免把句式变化作为独立目标。 |
 | [humanizer.tw](https://github.com/yelban/humanizer.tw/blob/main/SKILL.md) | 有匹配预期语气的要求，同时含口语化替换、个性与个人反应等建议。 | 这些建议对部分文体有用；直接用于学术稿件存在语域下降的风险，因此不设为默认手段。此处为对指令冲突的分析。 |
 | [anti-defensive-writing](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill/blob/main/skills/anti-defensive-writing/SKILL.md) | 强调贡献、减少自我贬低及防御性铺垫；也包含弱化不利材料的建议。 | 采用删去无信息自贬的原则。真实负面结果、研究范围及解释所需的限制继续保留，语言编辑不选择性改变证据。 |
 
-这些项目中的若干版本已经正面处理“去 AI 味导致失去专业性”的问题。easyunslop 的具体选择是：学术文体默认、术语和逻辑保护、局部充分编辑、原文与改文对照，以及展示应保持不变的文字。
+这些项目中的若干版本已经正面处理“去 AI 味导致失去专业性”的问题。easyunslop 按具体文体保持专业程度，保护术语和逻辑；修改后先独立阅读改稿，再对照原文核查含义，并用实例说明何时应保留原句。
 
 ## 公开资源补充：从基础清理到表达精修
 

@@ -138,6 +138,12 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 
 案例也说明了何时需要谨慎：补充方法解释或研究范围须有材料支持，删去“唯一性”这样的词则可能改变数学命题的含义。
 
+## 原稿与编辑稿对照
+
+[原稿—改稿对照](references/editorial-pairs.md)按来源身份记录 5 组短摘录、修改理由和容易改坏的写法。它们覆盖技术信息的位置、段落主体、数值范围、知识与时间限定，以及数据支持模型时的语义分叉。每组都区分来源已说明的理由和本项目的分析。
+
+其中一组来自实名客户的职业编辑前后稿，一组是医学编辑根据实际工作改编的教学例，一组是编辑机构展示的建议稿；另两组分别是科学写作专家的示范和作者回应审稿意见的实际修订。建议稿没有被写成作者定稿，教学例也没有被写成客户逐字原稿。这些例子已进入[编辑模式库](references/editing-patterns.md)及 [SKILL.md](SKILL.md) 的判断步骤。
+
 ## 项目文档
 
 | 文档 | 内容 |
@@ -146,8 +152,10 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 | [编辑模式库](references/editing-patterns.md) | 从词句清理到比较关系、信息次序和段落组织 |
 | [编辑实例](references/editing-examples.md) | 18 则自编教学材料及 1 则本项目 README 失败复盘 |
 | [真实修订案例](references/real-editing-cases.md) | 10 篇论文的版本、修改依据、定位与适用条件 |
+| [原稿—改稿对照](references/editorial-pairs.md) | 5 组有来源身份的短对照、修改理由、易改坏版本与使用边界 |
 | [来源记录](references/sources.md) | 参考项目、编辑研究与具体采用方式 |
 | [验证记录](docs/validation.md) | 已完成的检查、观察结果与评价范围 |
+| [留出材料检验](docs/transfer-evaluation.md) | 冻结技能后的四例真实材料对照与匿名评阅 |
 
 仓库由技能说明、参考材料和界面元数据组成，无需安装 Python、R 或 Node.js 依赖。
 
@@ -155,7 +163,9 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 
 判断改稿质量，要看它是否准确保留原意，也要看读者能否更容易理解主张、比较对象和适用条件。作者、学科同行和目标读者的反馈都可用于评价。AI 检测分数、删词数量和句子长短不作为评价标准。
 
-项目保存了 5 项使用自编材料的独立代理编辑记录，涵盖摘要、工程比较、规范论证、数学及地球与环境，并完成过一次规则综合审查。[输入](docs/inputs.md)、[输出](docs/outputs.md)和[验证记录](docs/validation.md)均可查看。真实作者或目标读者盲评，以及在独立上下文中开展的无技能对照实验，尚未进行。
+项目保存了 5 项使用自编材料的独立代理编辑记录，涵盖摘要、工程比较、规范论证、数学及地球与环境，并完成过一次规则综合审查。[输入](docs/inputs.md)、[输出](docs/outputs.md)和[验证记录](docs/validation.md)均可查看。
+
+后来又用四段未参与构建的真实材料做了一次[无技能／有技能对照](docs/transfer-evaluation.md)，由不知道分组身份的另一名代理评阅：EasyUnslop 较好 1 例，通用润色较好 1 例，2 例相当。这组短句测试没有显示总体优势。真实作者、学科编辑或目标读者的盲评，以及完整论文层面的对照，仍待进行。
 
 本项目的 README 在使用技能后也曾出现生硬表达，因此补充了文体判断和整段复读的要求。修改依据及三项维护者自检见[写作质量修订记录](docs/writing-quality-check.md)。
 

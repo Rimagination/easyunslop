@@ -2,6 +2,10 @@
   <img src="./assets/easyunslop-logo-tight.png" alt="EasyUnslop：Easy 为鼠尾草绿，Unslop 为深墨色的手绘纸笔 Logo" width="920">
 </p>
 <p align="center">
+  <strong>有真意，去粉饰，少做作，勿卖弄。</strong><br>
+  <sub>——鲁迅《作文秘诀》</sub>
+</p>
+<p align="center">
   <a href="#一分钟开始"><img alt="Input: drafts" src="https://img.shields.io/badge/INPUT-DRAFTS-789788?style=for-the-badge&amp;labelColor=555555"></a>
   <a href="#结果长什么样"><img alt="Output: scholarly prose" src="https://img.shields.io/badge/OUTPUT-SCHOLARLY_PROSE-293A39?style=for-the-badge&amp;labelColor=555555"></a>
   <a href="#能改什么"><img alt="Language: Chinese and English" src="https://img.shields.io/badge/LANGUAGE-ZH_%2B_EN-B48B64?style=for-the-badge&amp;labelColor=555555"></a>

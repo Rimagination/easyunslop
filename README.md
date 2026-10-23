@@ -151,8 +151,7 @@ EasyUnslop 接收已有文字，完成去 AI 味所需的措辞、句法与句�
 
 **scansci-write**：EasyUnslop 的前身。本项目从其语言修订规则中整理出去 AI 味的独立入口，并沿用原意、术语、条件与证据强度的核对方法。
 
-<details>
-<summary>去 AI 味与语言编辑项目</summary>
+### 去 AI 味与语言编辑项目
 
 - **[Humanizer-zh](https://github.com/op7418/humanizer-zh)**：参考文体优先的处理方式，保留正式程度、归因、必要限定及有功能的专业表达。
 - **[qu-ai-wei](https://github.com/LifelongLazyLearner/qu-ai-wei)**：参考编辑边界、症状与改法对应、作者声音及改后关系核对。
@@ -162,10 +161,7 @@ EasyUnslop 接收已有文字，完成去 AI 味所需的措辞、句法与句�
 - **[stop-slop](https://github.com/hardikpandya/stop-slop)**：参考开场铺垫、商业黑话、重复强调、假转折与过程旁白的定位方法。
 - **[anti-defensive-writing](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill)**：参考减少无信息的自我贬低与防御性铺垫；保留原稿真实的负面结果和必要限制。
 
-</details>
-
-<details>
-<summary>词频工具、反馈方法与修订语料</summary>
+### 词频工具、反馈方法与修订语料
 
 - **[llm-excess-vocab](https://github.com/berenslab/llm-excess-vocab)**：参考超额词与跨语料词频比较的分析思路，用于定位需要回读的表达。
 - **[slop-forensics](https://github.com/sam-paech/slop-forensics)**：参考单词、二元与三元词组的统计方式。
@@ -173,7 +169,5 @@ EasyUnslop 接收已有文字，完成去 AI 味所需的措辞、句法与句�
 - **[Review Feedback Agent](https://arxiv.org/html/2504.09737)**：参考区分稿件缺少信息与已有信息未被理解的方法，用于整理语言修改意见。
 - **[ARIES](https://github.com/allenai/aries)**：采用真实评审与段落修订的配对记录，分析具体改动及其依据。
 - **[arXivEdits](https://github.com/chaojiang06/arXivEdits)**：采用论文版本间的编辑与句子对齐记录，检查删改是否涉及实质含义。
-
-</details>
 
 写作与编辑资源、公开论文版本、评审及职业编辑样稿的具体出处，见[来源与采用记录](references/sources.md)。README 的去 AI 味示例在各例中标明网友帖子及本项目改稿。第三方作品保留各自的权利和许可。

@@ -13,7 +13,7 @@
 
 # EasyUnslop
 
-EasyUnslop 帮助你润色已有的中英文论文和专业文本：删去空泛套话，理顺句子和段落，让读者更容易理解你的主张及其依据。论文题名、各级节标题、摘要与正文都在编辑范围内。
+EasyUnslop 帮助你润色已有的中英文论文和专业文本：删去空泛套话，理顺句子和段落，让读者更容易理解你的主张及其依据。编辑范围包括论文题名、各级节标题、摘要、正文，以及所提供的图注和表注。
 
 修改从原稿和你提供的上下文出发。句子可以重写，段落可以在授权范围内重新安排；专业术语、研究结论、必要限定和作者声音随改稿一并核对。已经清楚、自然的文字可以保留。
 
@@ -29,15 +29,19 @@ EasyUnslop 帮助你润色已有的中英文论文和专业文本：删去空泛
 
 ### 先组织信息，再精修句子
 
-全文编辑先看各节如何推进核心问题，再处理段落与语句。在同一节内，可以调整句序、分合相邻段落、合并重复说明；跨节重排遵照你的结构编辑要求。编辑长稿时，记录需要统一的术语、数值口径和前后关联，完成后连读题名、摘要、结果与结论，检查前后对应。
+全文编辑先看各节如何推进核心问题，再处理段落与语句。长稿结构难跟随时，先用简短的反向提纲概括各段主题与职责，找出前提出现过晚、非相邻段落重复等问题。在同一节内，可以调整句序、分合相邻段落、合并重复说明；跨节重排遵照你的结构编辑要求。摘要、结果与讨论对同一发现承担不同任务，按用途保留必要重复。
+
+文献段根据所给研究的问题、方法或结果组织共同点和分歧，保留各自条件与引用。正文与图表也有分工：正文交代关键比较，图注和表注利用已有材料说明对象、单位、符号和误差含义。编辑长稿时，记录术语、数值口径和前后关联，完成后检查题名、摘要、正文与结论的对应。
 
 ### 根据学科和文体保留表达
 
-专业术语、缩写、被动句、名词化和长句按用途保留。中文和英文分别检查搭配、修饰范围与信息承接；论文、理论论证和项目介绍也各有合适的表达方式。文风样稿用于参照语气与节奏，其中的事实、观点和引文留在样稿中。
+专业术语、缩写、被动句、名词化和长句按用途保留。中文检查搭配、指代与信息承接；英文还结合实际指称校改冠词、可数性、修饰结构和时态。句间衔接优先靠清楚的主题与关系，连接词按需使用。
+
+原稿中写得好的段落和你提供的样稿，可以作为语气、人称及展开方式的参照。改稿保留作者已有的批评、让步、规范要求与合理强调，结尾也沿着已有论述收束。样稿中的事实、观点和引文留在样稿中。
 
 ### 用词频与词库定位需要检查的表达
 
-全文润色在初改前扫描稿内高频词、重复词组和[AI倾向词与常见表达候选库](references/lexical-signals.json)。报告给出次数、位置、上下文和保留条件；有同语言、同文体的参照稿时，还会比较归一化频率，帮助发现异常集中的用词。中文使用二三元字组，英文统计实词及二三元词组。
+全文润色在初改前扫描稿内高频词、重复词组和[AI倾向词与常见表达候选库](references/lexical-signals.json)。报告给出次数、位置、上下文和保留条件；有同语言、同文体的参照稿时，还会比较归一化频率，帮助发现异常集中的用词。混合稿分别统计中英文：中文使用二三元字组，英文统计实词及二三元词组。常见行内强调保留词组连续，代码、公式与参考文献从正文统计中剔除。
 
 主编辑据此检查重复、空泛修饰和不准确的搭配，再作修改。`robust regression`、系统性误差、闭环控制等专业表达按含义保留。词库分别标注文献研究、社区观察、本地记录和编辑模式；模型标签保留原有研究或观察范围。修改后复扫相关候选，再核对上下文，具体用法见[词汇诊断](references/lexical-diagnostics.md)。
 
@@ -59,7 +63,7 @@ flowchart TD
 
 两位检查者在独立上下文中检查同一版整稿，先不接收主编辑的修改理由或对方意见。表达检查者寻找阅读障碍、段落跳跃和生硬压缩；保义检查者核对含义、术语、数据、限定、引用及文档结构。
 
-表达检查者完成独立阅读后，再结合词汇候选检查遗漏的重复。检查意见需要指出具体位置、问题和依据。主编辑决定采纳、调整后采纳或保留原文，统一全文声音，再核对新改动及关联段落。发现问题可以回到组织或句法处理，具体问题解决后就交付。
+表达检查者完成独立阅读后，再结合词汇候选检查遗漏的重复。检查意见需要指出具体位置、问题和依据。主编辑回查稿件是否已有答案：答案位置难找时改善承接，答案清楚时可以说明依据后保留原文。主编辑决定采纳、调整后采纳或不采纳，统一全文声音，再核对新改动及关联段落。具体问题解决后就交付。
 
 **短段、单个标题和轻度校改默认由同一编辑者完成。** 你的协作要求优先；只能同时启动一位检查者时，依次进行表达检查和保义检查；没有代理工具时，由主编辑依次完成单读改稿与原文对照。日常使用默认只收到一份完整改稿，对照与理由可另行要求。详细交接和停止条件见[分轮编辑与协作](references/editorial-workflow.md)。
 
@@ -145,7 +149,7 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 
 </details>
 
-更多改稿、原句保留及误改复盘，见[25条编辑实例与失败复盘](references/editing-examples.md)。
+更多改稿、原句保留及误改复盘，见[33条编辑实例与失败复盘](references/editing-examples.md)。新增实例涵盖反向提纲、信息承接、英文语法、文献段组织、图注和作者立场。
 
 ## 适用范围
 
@@ -176,6 +180,8 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 | [Gopen 与 Swan：科学写作与读者预期](https://www.ugrad.stat.ubc.ca/~nancy/writing/gopen_swan.pdf) | 处理主干、修饰范围、上下文与信息重心，使专业内容更容易理解。 |
 | [Flower 与 Hayes：写作的认知过程](https://publicationsncte.org/content/journals/10.58680/ccc198115885) | 按具体问题调用规划、表达和复核；发现问题时回到对应层次修改。 |
 | [Purdue OWL](https://owl.purdue.edu/owl/general_writing/academic_writing/conciseness/index.html) 与 [Academic Phrasebank](https://www.phrasebank.manchester.ac.uk/about-academic-phrasebank/) | 删去冗余，同时保留承担实际交际功能的学术表达。 |
+| [Wisconsin：反向提纲](https://writing.wisc.edu/handbook/processandstructure/reverseoutlines/)、[George Mason：信息承接](https://writingcenter.gmu.edu/writing-resources/grammar-style/improving-cohesion-the-known-new-contract) | 检查段落职责、前提位置与句间主题，区分必要复现和无信息重复。 |
+| [George Mason：学术时态](https://writingcenter.gmu.edu/writing-resources/grammar-style/the-three-common-tenses-used-in-academic-writing)与[ICMJE：稿件准备](https://www.icmje.org/recommendations/browse/manuscript-preparation/preparing-for-submission.html) | 按论述功能检查时态，用已有材料明确图表说明；学科格式按各自要求执行。 |
 | [多模型讨论的理论研究](https://proceedings.neurips.cc/paper_files/paper/2024/hash/32e07a110c6c6acf1afbf2bf82b614ad-Abstract-Conference.html) | 相近模型可能共享误解，因此要求检查者给出文字依据，由主编辑核实建议。 |
 | [Juzek与Ward：词汇过度代表](https://aclanthology.org/2025.coling-main.426/)与[超额词研究的原始项目](https://github.com/berenslab/llm-excess-vocab) | 以词频和重复词组定位候选，保留研究范围，再回到句段判断是否需要修改。 |
 
@@ -189,6 +195,8 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 
 早期的[四例无技能／有技能对照](docs/transfer-evaluation.md)保留了原输出与匿名代理评阅，后续复核撤回了其中一例的原评价，并将问题用于修正规则。历史记录与更正一并保留。
 
+本次综合补充接入反向提纲、信息承接、英文语法与时态、图注分工和立场核对等方法，新增8个教学例，并修复混合语言和常见格式的统计遗漏。新版已实际用于中文行政法论证及英文地球环境稿，原稿、终稿和执行情况见[综合补充与验证](docs/comprehensive-update-20261023.md)。
+
 质量判断关注含义是否保持、既有信息是否更易理解、清楚的原句是否得到保留。公开论文修订、实际改稿和作者或读者反馈都能提供依据；AI检测分数、删词数量和代理的一致意见不作质量结论。
 
 ## 项目文档
@@ -199,12 +207,13 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 | [分轮编辑与协作](references/editorial-workflow.md) | 分工、交接材料、意见整合、工具适配与停止条件 |
 | [词汇诊断](references/lexical-diagnostics.md)与[候选词库](references/lexical-signals.json) | 高频词、重复词组、参照词频、上下文及保留条件 |
 | [编辑模式库](references/editing-patterns.md) | 词句、比较关系、信息次序与段落组织的具体处理 |
-| [编辑实例与失败复盘](references/editing-examples.md) | 25条实例，包含标题、LaTeX、数据口径及常见误改 |
+| [编辑实例与失败复盘](references/editing-examples.md) | 33条实例，包含结构、衔接、语法、标题、图注及常见误改 |
 | [真实论文修订](references/real-editing-cases.md) | 10篇公开论文的版本、来源、定位与适用条件 |
 | [原稿—改稿对照](references/editorial-pairs.md) | 5组短对照、修改理由和容易改坏的写法 |
 | [来源与采用记录](references/sources.md) | 参考项目、专业编辑资源和采用范围 |
 | [本轮更新与试用](docs/workflow-update-20261023.md) | 集中修订、全文协作及轻量分支的实际记录 |
 | [词汇诊断验证](docs/lexical-validation-20261023.md) | 工具自检、真实调用记录及模拟稿前后对照 |
+| [综合补充与验证](docs/comprehensive-update-20261023.md) | 专业写作方法、AI写作偏差、格式与混合语言修复及本轮实际试用 |
 | [早期验证记录](docs/validation.md) | 初始版本检查及后续修订索引 |
 
 ## 来源与致谢

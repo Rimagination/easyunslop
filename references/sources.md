@@ -1,6 +1,6 @@
 # 来源与采用边界
 
-核读日期：2026-10-22；原稿—改稿对照补核于 2026-10-23。竞品链接指向当时公开的主分支文件；未锁定提交。论文案例另记录具体版本、评审及段落定位。竞品指令的比较与真实稿件的编辑选择分别使用。
+核读日期：2026-10-22；原稿—改稿对照及专业编辑方法补核于 2026-10-23。竞品链接指向当时公开的主分支文件；未锁定提交。论文案例另记录具体版本、评审及段落定位。竞品指令的比较与真实稿件的编辑选择分别使用。
 
 easyunslop 从 scansci-write 的语言修订规则中抽出独立入口，新增以学术语域保持为中心的简短编辑流程与正反例。保留主张、术语、证据强度、量词和否定范围的规则，在原项目中已有积累。没有复制竞品的整套提示词或安装外部依赖。
 
@@ -78,6 +78,25 @@ easyunslop 从 scansci-write 的语言修订规则中抽出独立入口，新增
 - [Claude Code的具体用户报告](https://github.com/anthropics/claude-code/issues/53454)只作为`load-bearing`的社区观察，未当成当前Claude全系列的实测词频。
 - `glm-local-202609`来自父项目2026-09-15的作者偏好与探索性小样本记录；原记录还存在样本少、提示与词库相互影响等解释限制，因此按本地编辑观察标记。它不代表整个GLM系列的统计特征。
 - 其余通用条目根据本项目的[编辑模式](editing-patterns.md)整理检查动作与保留条件。社区观察、作者偏好和发表研究分别标记，不以来源名气替代逐句判断。
+
+## 结构、语法与作者声音的补充方法
+
+以下方法并入已有编辑顺序，按阅读困难调用，不为每篇稿件另设一轮。大学写作中心和编辑标准提供实践指导；关于AI的研究只支持其样本范围内的风险判断，不证明本技能已经取得普遍优势。实例26–33均为本项目自编，不能称为来源中的真实编辑稿。
+
+| 一手资源 | 具体采用 | 适用边界 |
+|---|---|---|
+| [Wisconsin：反向提纲](https://writing.wisc.edu/handbook/processandstructure/reverseoutlines/)与[长稿修订](https://writing.wisc.edu/handbook/processandstructure/revisinglongprojects/) | 从整段概括主题与职责，发现前提滞后、非相邻语义重复和一段多任务；落入P02、P08及实例26。 | 保留摘要、结果、讨论的不同任务；不强制主题句位于段首，不自行重建缺失论证。 |
+| [George Mason：已知与新信息](https://writingcenter.gmu.edu/writing-resources/grammar-style/improving-cohesion-the-known-new-contract)与[Harvard：过渡](https://writingcenter.fas.harvard.edu/transitions) | 先检查主题、指称和句间关系，再调整主语、语态或连接；落入S04及实例27。 | 不强制每句旧信息开头、重点结尾；专业词的必要复现有助于承接。 |
+| [George Mason：冠词](https://writingcenter.gmu.edu/writing-resources/grammar-style/definite-and-indefinite-articles)、[可数性](https://writingcenter.gmu.edu/writing-resources/grammar-style/count-vs-noncount-nouns) | 依据实际指称、可数性和既定对象集合处理限定词与一致关系；落入S11及实例28。 | 不以首次/再次出现机械分配a/the；不将英文规则套到中文。 |
+| [Purdue：悬垂修饰](https://owl.purdue.edu/owl/general_writing/mechanics/dangling_modifiers_and_how_to_correct_them.html)与[关系从句的限定性](https://owl.purdue.edu/owl/general_writing/grammar/relative_pronouns/defining_vs_non_defining.html) | 拆并句后检查动作主体、从句范围及逗号；落入S12及实例29。 | 不补造施事者，不机械换that/which；期刊的形式偏好不能改变所指子集。 |
+| [George Mason：学术时态](https://writingcenter.gmu.edu/writing-resources/grammar-style/the-three-common-tenses-used-in-academic-writing)与[Phrasebank：引用来源](https://www.phrasebank.manchester.ac.uk/referring-to-sources/) | 区分已完成操作、图文陈述、当前解释及既有研究与现在的关系；落入S13及实例30。 | 合理的时态切换保留；不把特定观察改为普遍规律，不把计划写成完成。 |
+| [ICMJE：稿件准备](https://www.icmje.org/recommendations/browse/manuscript-preparation/preparing-for-submission.html)与[Editors Canada：文体编辑](https://editors.ca/publications/professional-editorial-standards/stylistic-editing/) | 区分正文、图表及说明文字的任务；从所给材料恢复必要单位、缩写和误差说明，压缩逐格复述；落入P10及实例32。 | ICMJE的医学格式不推广为全学科规定；不猜样本量或SD/SE/CI，不删不利结果。 |
+| [CHI 2025：AI写作协助与跨文化文风](https://arxiv.org/html/2409.11360)及[写作辅导者访谈](https://aclanthology.org/2025.in2writing-1.5/) | 从作者已有好段落或所给样稿辨认文风，保留其评价立场与展开方式；与既有作者声音规则合并。 | 前者涉及印度与美国参与者的特定英文写作任务，后者为10位辅导者的访谈及原型研究；不外推为所有文化、模型或专业论文的已证效果。 |
+| [How LLMs Distort Our Written Language](https://arxiv.org/abs/2603.18161)，2026年预印本 | 将立场与含义漂移作为核对重点，检查批评、让步和结尾；落入保义检查与实例33。 | 特定模型和议论文修订实验不代表所有学科；不据此规定所有作者必须语气强烈，也不引用基于分类器推断的AI使用率来证明编辑效果。 |
+| [Review Feedback Agent](https://arxiv.org/html/2504.09737)与[friction项目](https://github.com/zhangchaodesign/friction) | 将泛泛反馈拆为可定位的理解问题，检查稿件是否已有答案；合并重复意见，允许有依据地不采纳；落入主编辑整合环节。 | 评审辅助与新手写作研究不构成专业论文效果保证；模型模拟反馈不称为真人审核。 |
+| [humanizer](https://github.com/blader/humanizer/blob/main/SKILL.md)与[qu-ai-wei模式库](https://github.com/LifelongLazyLearner/qu-ai-wei/blob/main/references/pattern-catalog.md) | 补查跨节套式、解释尾句及权威归属；强化B10、B12、P06，采用前回到原稿核对。 | 社区实践与实证研究分别标记；不按词形、尾句形式或句型相似度自动删改。 |
+
+[Do LLMs write like humans?](https://arxiv.org/html/2410.16107)提供不同模型、任务间写作特征差异的反例背景。被动句、词汇多样性或句子节奏均不设统一人类标准；不采用禁用全部副词、被动句、名词化、固定标点配额、刻意加错、插入私人细节或凭空增加具体事实的做法。词频工具继续承担定位职责，不扩展为作者身份鉴定。
 
 ## 按实际失误维护技能
 

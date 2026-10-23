@@ -1,6 +1,6 @@
 # 编辑实例：保留学术表达质量
 
-第 1–17、19–21、23–25 例为自编教学片段；第 18 例记录本项目 README 的实际失败，第 22 例记录自编测试材料的实际输出与后续误判。各例展示编辑选择，原话、教学候选与失败改法分别标明；不作为词语替换表或固定模板。
+第 1–17、19–21、23–33 例为自编教学片段；第 18 例记录本项目 README 的实际失败，第 22 例记录自编测试材料的实际输出与后续误判。各例展示编辑选择，原话、教学候选与失败改法分别标明；不作为词语替换表或固定模板。
 
 有公开版本和评审依据的实际论文修改另见 [真实修订案例](real-editing-cases.md)。本文件提供可完整阅读的教学改稿，真实案例说明作者实际作出的取舍，两类材料分别标注。
 
@@ -309,3 +309,112 @@ Edited:
 > This analysis tested whether classification performance depended on only a few input windows.
 
 取舍：这个候选明确排除其他窗口的贡献，不能当作原含混句的确定等义改文。若改成“predictive information was concentrated in a few windows”，又会用信息含量替换实际观察对象；给定材料没有说明两者等价。可以完成其他清楚处的编辑，不添加重新训练模型的步骤。
+
+## 26. 反向提纲：处理前提滞后与非相邻重复
+
+以下为自编规范论证片段，用户允许同一节内重排和合并。
+
+原文：
+> 可争辩性要求决定的作出者回应异议。回应渠道仅有形式上的设置，尚不足以满足这一要求。
+>
+> 对直接影响基本权益的决定，本文主张机构应当说明依据。这使当事人能够确定异议指向的理由。
+>
+> 本文用“可争辩性”指当事人能够提出异议并获得回应的制度条件。提供异议入口却不回应，仍未满足可争辩性的要求。
+
+内部提纲可记为：第一段“回应要求”；第二段“说明依据的规范主张与理由”；第三段“概念定义，并重复第一段要求”。据此把已有定义移到使用之前，合并同一节内无新增作用的重复。
+
+改文：
+> 本文用“可争辩性”指当事人能够提出异议并获得回应的制度条件。可争辩性要求决定的作出者回应异议，仅设置回应渠道尚不足以满足这一要求。
+>
+> 对直接影响基本权益的决定，本文主张机构应当说明依据，使当事人能够确定异议指向的理由。
+
+取舍：定义、回应义务、适用范围和“应当”均保留。若同一发现分别在摘要中概括、结果中报告、讨论中解释，须辨认各自任务后再决定是否合并；不能仅凭语义相似删掉其中一处。反向提纲用于找位置，无须交付给读者。
+
+## 27. 已知信息承接：准确重复核心词
+
+以下为自编工程片段。
+
+原文：
+> The chamber contained two temperature sensors. The correction factor was calculated from the difference between the sensor readings. Drift in the sensor nearest the inlet caused this difference.
+
+改文：
+> The chamber contained two temperature sensors. Drift in the sensor nearest the inlet caused a difference between their readings. This difference was used to calculate the correction factor.
+
+取舍：先交代读数差异，再说明其用途；“difference”的复现承担衔接。两个传感器、漂移位置、已有因果解释与校正因子的计算来源保持不变。这里的被动句使已有对象接住新信息，无须强换为主动句。若本段问题恰是校正因子的计算，原来的先后顺序也可能合适，不能将旧信息在前当成硬规则。
+
+## 28. 冠词与可数性：先确定所指
+
+以下为自编水文方法片段。
+
+原文：
+> We collected a water sample at each of six sites. Sample from the upstream site was filtered twice. An information on discharge was obtained from station records.
+
+改文：
+> We collected a water sample at each of six sites. The sample from the upstream site was filtered twice. Information on discharge was obtained from station records.
+
+取舍：第二句虽首次出现完整短语，已有采样安排和地点足以确定所指，使用“the”；information 在此为不可数名词。六个地点各取一个水样、只有上游样品被明确报告过滤两次的范围继续保留。不要将“sample”全部改成复数，也不根据首次出现机械填“a”。
+
+## 29. 附加结构与从句：保留动作主体和样本子集
+
+以下为自编材料科学片段。
+
+原文：
+> Using a mixed-effects model, a difference of 3.2 units was estimated between the two batches. Samples that remained below the detection limit were excluded from the analysis.
+
+改文：
+> A difference of 3.2 units between the two batches was estimated using a mixed-effects model. Samples that remained below the detection limit were excluded from the analysis.
+
+取舍：第一句将分析工具放近估计操作，消除句首分词结构好像由“difference”实施的错配，无须补造研究人员。第二句已经准确筛选低于检出限的样本，保持原句；若改为“Samples, which remained below the detection limit, ...”，从句会变成对全部所指样本的补充说明，改变范围。不是所有关系从句都需要统一成一种形式。
+
+## 30. 时态：保留操作、当前陈述和计划的区别
+
+以下为自编环境研究片段。
+
+原文：
+> We collected samples at six sites in July 2025. Figure 2 show the site means. These results suggest a seasonal difference. We will repeat the sampling next spring.
+
+改文：
+> We collected samples at six sites in July 2025. Figure 2 shows the site means. These results suggest a seasonal difference. We will repeat the sampling next spring.
+
+取舍：这里只需修正主谓一致。已完成采样、当前图示与解释、未来计划分别保留；不能为了全篇时态一致而把复采写成已完成，也不将“suggest”改成普遍成立的证明。人文文本分析中的现在时同样需要结合论述功能判断。
+
+## 31. 文献综合：按问题组织，保留不同研究条件
+
+以下为自编教育研究片段；甲、乙、丙、丁及年份均为模拟标记，无对应真实论文。
+
+原文：
+> 甲（2021）研究了大学生写作，报告同伴反馈与修订次数相关。乙（2022）研究了中学生写作，发现明确意见更常伴随论点修改。丙（2023）在大学生写作中区分了表层修订与论点修订。丁（2024）也研究了大学生写作，将单次任务的修订次数作为参与程度指标。
+
+改文：
+> 在修订次数方面，甲（2021）报告了大学生写作中同伴反馈与修订次数的关联；丁（2024）则在大学生写作中将单次任务的修订次数作为参与程度指标。
+>
+> 修订类型也受到关注。丙（2023）在大学生写作中区分了表层修订与论点修订；乙（2022）在中学生写作中发现，明确意见更常伴随论点修改。
+
+取舍：从逐篇报幕改为按问题分组，大学生与中学生、次数与类型的区别保留，各引用仍对应原来的发现。主题句概括已有内容，不追加“充分证明反馈全面提升写作质量”的新判断。仅有文献题名或引文标记时，不从常识编造综合结论；已有实质推论也不因语言编辑而静默撤回。
+
+## 32. 图注与正文：从已有材料恢复必要说明
+
+以下为自编地球与环境片段。
+
+已给方法：
+> 本研究纳入12座湖泊。图2每个点表示一座湖泊的夏季表层溶解氧均值，单位为mg/L；误差线表示该均值的95%自助法置信区间。
+
+原图注：
+> 图2 研究结果
+
+改图注：
+> 图2 12座湖泊的夏季表层溶解氧。点表示各湖泊均值（mg/L），误差线表示均值的95%自助法置信区间。
+
+取舍：图注的对象、样本单位、统计量、单位和误差含义均来自所给方法；没有根据常见画法将误差线猜为SD或SE。正文按其问题保留关键比较及相关负面结果，无须逐点重述全部均值。只给原图注而没有这些信息时，可以精修措辞，不生成这份完整图注。
+
+## 33. 作者立场：保留批评与规范要求
+
+以下为自编传播政策评论片段。
+
+原文：
+> 需要指出的是，本文反对把申诉渠道的数量当作程序正当性的充分证据。对于涉及账户封禁的决定，平台应当公开适用规则，并回应用户提出的具体异议。
+
+改文：
+> 本文反对把申诉渠道的数量当作程序正当性的充分证据。对于涉及账户封禁的决定，平台应当公开适用规则，并回应用户提出的具体异议。
+
+取舍：删去空泛提醒，保留反对立场、充分性判断、适用范围与“应当”。不改成“平台可以进一步探索……”，不添加“兼顾多方利益”的泛泛让步或“技术发展将逐步解决问题”的乐观结尾。作者原文若确有利弊权衡、暂定判断或积极展望，也按其原意保留。

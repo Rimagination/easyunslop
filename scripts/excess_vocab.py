@@ -21,7 +21,10 @@ import tempfile
 
 HAN = re.compile(r"[\u4e00-\u9fff]+")
 EN_TOKEN = re.compile(r"[A-Za-z][A-Za-z'’\-]*")
-BOUNDARY = re.compile(r"[.!?。！？;；:\n\r\x00]+")
+BOUNDARY = re.compile(r"[.!?。！？;；:\n\r\x00\u4e00-\u9fff]+")
+SOFT = "\x01"
+INLINE_TAGS = {"a", "abbr", "b", "bdi", "bdo", "cite", "del", "em", "i", "ins",
+               "mark", "q", "s", "small", "span", "strong", "sub", "sup", "u"}
 DEFAULT_LEXICON = Path(__file__).resolve().parents[1] / "references" / "lexical-signals.json"
 EN_STOP = set(
     """a an the and or but for nor so yet of to in on at by as is it be are was were
@@ -35,13 +38,35 @@ EN_STOP = set(
 )
 
 
-def _mask(text):
+def _mask(text, marker="\x00"):
     """Keep line offsets and prevent phrases from bridging removed material."""
-    return re.sub(r"[^\n]", "\x00", text)
+    return re.sub(r"[^\n]", marker, text)
 
 
-def _sub_mask(pattern, text, flags=0):
-    return re.sub(pattern, lambda match: _mask(match.group()), text, flags=flags)
+def _sub_mask(pattern, text, flags=0, marker="\x00"):
+    return re.sub(pattern, lambda match: _mask(match.group(), marker), text, flags=flags)
+
+
+def _unwrap_formatting(text):
+    """Keep wrapper offsets while letting natural-language tokens join through them."""
+    for pattern in (r"(?<![\\*])(\*{1,3})(?!\*)(?=\S)([^\n\x00]*?\S)\1(?!\*)",
+                    r"(?<![\\\w])(_{1,3})(?!_)(?=\S)([^\n\x00]*?\S)\1(?![\w_])"):
+        while True:
+            unwrapped = re.sub(pattern, lambda match: _mask(match[1], SOFT) + match[2] + _mask(match[1], SOFT), text)
+            if unwrapped == text:
+                break
+            text = unwrapped
+    characters = list(text)
+    for match in re.finditer(r"\\(?:emph|textit|textbf|textnormal|textrm|textsf|texttt|textsc|underline)\*?\s*\{", text):
+        depth = 1
+        for index in range(match.end(), len(text)):
+            if text[index] in "{}" and text[index - 1] != "\\":
+                depth += 1 if text[index] == "{" else -1
+                if depth == 0:
+                    characters[match.start():match.end()] = _mask(match.group(), SOFT)
+                    characters[index] = SOFT
+                    break
+    return "".join(characters)
 
 
 def _heading(line):
@@ -74,6 +99,12 @@ def clean_text(text):
     text = "".join(lines)
     text = _sub_mask(r"(?<!`)(`+)(?!`)(.*?)\1(?!`)", text, re.S)
 
+    # Isolate generated references, leaving the next normal section untouched.
+    text = _sub_mask(r"\\begin\s*\{thebibliography\}.*?\\end\s*\{thebibliography\}", text, re.S)
+    text = _sub_mask(r"\\datalist\b.*?\\enddatalist\b|\\entry\s*\{.*?\\endentry\b", text, re.S)
+    text = _sub_mask(r"\\(?:printbibliography|printbiblist)\b(?:\s*\[[^\]]*\])*(?:\s*\{[^{}]*\})?", text)
+    text = _sub_mask(r"\\refsection\s*\{[^{}]*\}|\\endrefsection\b", text)
+
     lines, reference_level = [], None
     reference_title = re.compile(r"^(?:\d+(?:\.\d+)*[.)、]?\s*)?(?:references|bibliography|参考文献)\s*[:：]?\s*$", re.I)
     for line in text.splitlines(keepends=True):
@@ -90,15 +121,21 @@ def clean_text(text):
     text = _sub_mask(r"\\\[.*?\\\]|\\\(.*?\\\)", text, re.S)
     text = _sub_mask(r"(?<!\\)\$\$.*?(?<!\\)\$\$", text, re.S)
     text = _sub_mask(r"(?<![\\$])\$(?!\$)(?:\\.|[^$])*?(?<!\\)\$", text, re.S)
-    text = _sub_mask(r"\\(?:[Cc]ite[A-Za-z]*|nocite|[Ee]qref|[Aa]utoref|[Cc]ref|[Vv]ref|ref|pageref|label|bibliography|addbibresource|bibliographystyle)\*?(?:\s*\[[^\]]*\])*\s*\{[^{}]*\}", text)
+    cite_args = r"(?:\s*\[[^\]]*\])*\s*\{[^{}]*\}"
+    # Only explicit multicite commands consume repeated mandatory arguments.
+    text = _sub_mask(r"\\(?:[Cc]ites|(?:auto|paren|text|foot|smart|super|full|footfull|note)[Cc]ites)\*?(?:" + cite_args + r")+", text)
+    text = _sub_mask(r"\\(?:[Cc]ite[A-Za-z]*|(?:auto|paren|text|foot|smart|super|full|footfull|note)[Cc]ite[A-Za-z]*|nocite)\*?" + cite_args, text)
+    text = _sub_mask(r"\\(?:[Ee]qref|[Aa]utoref|[Cc]ref|[Vv]ref|ref|pageref|label|bibitem|bibliography|addbibresource|bibliographystyle)\*?(?:\s*\[[^\]]*\])*\s*\{[^{}]*\}", text)
     text = _sub_mask(r"\[[^\]\n]*@[A-Za-z0-9][^\]\n]*\]", text)
     text = _sub_mask(r"(?<!\w)@[A-Za-z0-9][\w:.+\-/]*", text)
     text = _sub_mask(r"^\s{0,3}\[[^\]\n]+\]:[^\n]*", text, re.M)
     # Keep the readable label in [label](URL) and images/captions.
     text = _sub_mask(r"\]\(\s*(?:<[^>\n]*>|(?:\\.|[^)\n])*)\)", text)
-    text = _sub_mask(r'''</?[A-Za-z][A-Za-z0-9:-]*(?:\s+[A-Za-z_:][A-Za-z0-9_.:-]*(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>`]+))?)*\s*/?>''', text)
+    text = re.sub(r'''</?([A-Za-z][A-Za-z0-9:-]*)(?:\s+[A-Za-z_:][A-Za-z0-9_.:-]*(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s"'=<>`]+))?)*\s*/?>''',
+                  lambda match: _mask(match.group(), SOFT if match[1].lower() in INLINE_TAGS else "\x00"), text)
     text = _sub_mask(r"(?:https?://|www\.)[^\s<>\x00]+", text, re.I)
-    # Formatting commands, headings, and captions retain their braced prose.
+    text = _unwrap_formatting(text)
+    # Other commands, headings, and captions retain their braced prose.
     text = _sub_mask(r"\\[A-Za-z]+\*?", text)
     return text
 
@@ -121,19 +158,23 @@ def detect_lang(text):
     return "zh" if han and han / (han + latin) > 0.3 else "en"
 
 
+def available_languages(text):
+    return [lang for lang, pattern in (("zh", HAN), ("en", EN_TOKEN)) if pattern.search(text)]
+
+
 def zh_ngrams(text):
-    return [run[index:index + size] for run in HAN.findall(text)
+    return [run[index:index + size] for run in HAN.findall(text.replace(SOFT, ""))
             for size in (2, 3) for index in range(len(run) - size + 1)]
 
 
 def en_words(text):
-    return [word.lower() for word in EN_TOKEN.findall(text)
+    return [word.lower() for word in EN_TOKEN.findall(text.replace(SOFT, ""))
             if len(word) >= 3 and word.lower() not in EN_STOP]
 
 
 def en_phrases(text):
     out = []
-    for sentence in BOUNDARY.split(text):
+    for sentence in BOUNDARY.split(text.replace(SOFT, "")):
         tokens = [word.lower() for word in EN_TOKEN.findall(sentence)]
         for size in (2, 3):
             for index in range(len(tokens) - size + 1):
@@ -210,28 +251,34 @@ def load_lexicon(path, profile):
 def lexical_candidates(documents, lexicon, lang, profile, top):
     """Count every eligible entry before ranking; keep up to five hit contexts."""
     candidates = []
-    prepared = [(path, text, [0] + [match.end() for match in re.finditer("\n", text)])
-                for path, text in documents]
+    languages = {lang} if isinstance(lang, str) else set(lang)
+    prepared = []
+    for path, text in documents:
+        offsets = [index for index, character in enumerate(text) if character != SOFT] if SOFT in text else None
+        prepared.append((path, text, text.replace(SOFT, ""), offsets,
+                         [0] + [match.end() for match in re.finditer("\n", text)]))
     for entry in lexicon["entries"]:
-        if entry["lang"] != lang or not ({"general", profile} & set(entry["profiles"])):
+        if entry["lang"] not in languages or not ({"general", profile} & set(entry["profiles"])):
             continue
         forms = [re.escape(form.strip()) for form in sorted(entry["forms"], key=len, reverse=True)]
         pattern = "(?:" + "|".join(forms) + ")"
-        if lang == "en":
+        if entry["lang"] == "en":
             pattern = r"(?<![A-Za-z0-9_'’\-])" + pattern.replace(r"\ ", r"[ \t]+") + r"(?![A-Za-z0-9_'’\-])"
-        matcher = re.compile(pattern, re.I if lang == "en" else 0)
+        matcher = re.compile(pattern, re.I if entry["lang"] == "en" else 0)
         count, occurrences = 0, []
-        for path, text, starts in prepared:
-            for match in matcher.finditer(text):
+        for path, text, view, offsets, starts in prepared:
+            for match in matcher.finditer(view):
                 count += 1
                 if len(occurrences) < 5:
-                    line_number = bisect_right(starts, match.start())
+                    start = offsets[match.start()] if offsets is not None else match.start()
+                    end = offsets[match.end() - 1] + 1 if offsets is not None else match.end()
+                    line_number = bisect_right(starts, start)
                     line_start = starts[line_number - 1]
-                    line_end = text.find("\n", match.end())
+                    line_end = text.find("\n", end)
                     line_end = len(text) if line_end < 0 else line_end
-                    context_start = max(line_start, match.start() - 65)
-                    context_end = min(line_end, match.end() + 65)
-                    context = re.sub(r"[\s\x00]+", " ", text[context_start:context_end]).strip()
+                    context_start = max(line_start, start - 65)
+                    context_end = min(line_end, end + 65)
+                    context = re.sub(r"[\s\x00]+", " ", text[context_start:context_end].replace(SOFT, "")).strip()
                     occurrences.append({"file": str(path), "line": line_number,
                                         "match": match.group(), "context": context})
         if count:
@@ -247,9 +294,10 @@ def _md(value):
 
 
 def render_report(result):
-    lines = [f"# 词汇编辑候选（{result['lang']}）", "",
+    lines = [f"# 词汇编辑候选（{' / '.join(result['scan_languages'])}）", "",
              "- 高频、重复和参照差异均供人工编辑复核；不计算 AI 概率。领域术语、缩写及必要表达应结合语境保留。",
-             "- 中文统计为汉字二三元字组，并非中文分词；英文词组在句子标点和换行处断开。",
+             "- 中文统计为汉字二三元字组，并非中文分词；英文词组在句子标点、换行、中文片段和块级标签处断开。",
+             f"- 扫描语言：{'、'.join(result['scan_languages'])}；各语言分别统计，混合参照仅贡献相应语言的统计单位。",
              f"- 目标：{', '.join(_md(path) for path in result['targets'])}",
              f"- 词库 profile：{_md(result['profile'])}；同时检查 general 条目。",
              f"- 有效参照文件：{len(result['reference_files'])}；未提供有效参照时只报告稿内重复和词库候选。", ""]
@@ -271,7 +319,7 @@ def render_report(result):
         source = result["lexicon"]["sources"][source_id]
         lines.append(f"- {_md(source_id)}：{_md(source['title'])}；{_md(source['url'])}；{_md(source['evidence'])}")
     for title, table in result["blocks"].items():
-        lines += ["", f"## {title}", "", f"目标统计单位 {table['n_target']}；参照统计单位 {table['n_ref']}。", "",
+        lines += ["", f"## {title}", "", f"目标统计单位 {table['n_target']}；参照统计单位 {table['n_ref']}（{len(table['reference_files'])} 个有效参照文件）。", "",
                   "### 稿内重复", "", "| 词/字组 | 目标次数 | 每千统计单位 |", "|---|---:|---:|"]
         lines += [f"| {_md(row['token'])} | {row['target']} | {row['target_per_1000']} |" for row in table["repeated"]]
         if table["baseline"]:
@@ -344,7 +392,9 @@ def main(argv=None):
         for path, text in documents:
             if not re.search(r"[A-Za-z\u4e00-\u9fff]", text):
                 raise ValueError(f"目标为空或清洗后没有可扫描正文：{path}")
-        lang = detect_lang("\n".join(text for _, text in documents)) if args.lang == "auto" else args.lang
+        combined_text = "\n".join(text for _, text in documents)
+        lang = detect_lang(combined_text) if args.lang == "auto" else args.lang
+        scan_languages = available_languages(combined_text) if args.lang == "auto" else [args.lang]
         warnings, references = [], []
         for path in ref_files:
             if any(_same_path(path, target) for target in targets):
@@ -357,25 +407,37 @@ def main(argv=None):
                 continue
             if not re.search(r"[A-Za-z\u4e00-\u9fff]", text):
                 warnings.append(f"参照为空或清洗后无正文，已跳过：{path}")
-            elif detect_lang(text) != lang:
-                warnings.append(f"参照语言不匹配，已跳过 {path}：检测为 {detect_lang(text)}，目标为 {lang}")
+            elif not set(available_languages(text)) & set(scan_languages):
+                warnings.append(f"参照语言不匹配，已跳过 {path}：检测含 {'/'.join(available_languages(text))}，扫描 {'/'.join(scan_languages)}")
             else:
                 references.append((path, text))
         if args.ref and not references:
             warnings.append("没有有效且语言匹配的 md/txt 参照；仅报告稿内重复和词库候选，不建立参照基线。")
-        counters = {"汉字二三元字组（并非分词）": zh_ngrams} if lang == "zh" else {"英文单词": en_words, "英文二三元词组": en_phrases}
+        counters = {}
+        if "zh" in scan_languages:
+            counters["汉字二三元字组（并非分词）"] = ("zh", zh_ngrams)
+        if "en" in scan_languages:
+            counters.update({"英文单词": ("en", en_words), "英文二三元词组": ("en", en_phrases)})
         blocks = {}
-        for title, tokenize in counters.items():
+        for title, (block_lang, tokenize) in counters.items():
             target_counts, ref_counts = Counter(), Counter()
+            block_references = []
             for _, text in documents:
                 target_counts.update(tokenize(text))
-            for _, text in references:
-                ref_counts.update(tokenize(text))
+            for path, text in references:
+                counts = Counter(tokenize(text))
+                if counts:
+                    ref_counts.update(counts)
+                    block_references.append(str(path))
             blocks[title] = excess_tables(target_counts, ref_counts, args.top, args.min_count)
-            if references and blocks[title]["n_ref"] < 100:
+            blocks[title].update({"lang": block_lang, "reference_files": block_references})
+            if args.ref and not ref_counts:
+                warnings.append(f"{title}没有可用参照统计单位，仅报告该类稿内重复，不建立该类基线。")
+            elif ref_counts and blocks[title]["n_ref"] < 100:
                 warnings.append(f"{title}参照仅 {blocks[title]['n_ref']} 个统计单位；小样本的频次比受个别用词影响，需结合上下文复核。")
-        candidates, candidate_total = lexical_candidates(documents, lexicon, lang, args.profile, args.top)
-        result = {"lang": lang, "targets": [str(path) for path in targets], "profile": args.profile,
+        candidates, candidate_total = lexical_candidates(documents, lexicon, scan_languages, args.profile, args.top)
+        result = {"lang": lang, "scan_languages": scan_languages,
+                  "targets": [str(path) for path in targets], "profile": args.profile,
                   "ref": str(Path(args.ref).resolve()) if args.ref else None,
                   "reference_files": [str(path) for path, _ in references], "warnings": warnings,
                   "lexicon": {"path": str(args.lexicon.resolve()), "version": lexicon["version"], "sources": lexicon["sources"]},

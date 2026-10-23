@@ -22,7 +22,8 @@ def main():
                "entries": [entry("delve", "delve"), entry("single", "illustrates"),
                            entry("carbon", "carbon turnover"), entry("excluded", "artifactnoise"),
                            entry("ecology", "resilience", "ecology"),
-                           entry("medical", "seasonal", "medical"), entry("zh", "深入", lang="zh")]}
+                           entry("medical", "seasonal", "medical"), entry("zh", "深入", lang="zh"),
+                           entry("conclusion", "in conclusion")]}
     manuscript = r'''# Delve into canopy
 Figure 1. Carbon turnover illustrates seasonal change.
 \caption{Canopy resilience}
@@ -58,8 +59,54 @@ Appendix prose.
     assert "gamma delta" in phrases and "epsilon zeta" in phrases
     assert not {"alpha beta", "beta gamma", "delta epsilon"} & set(phrases)
     assert scan.en_phrases(scan.clean_text("alpha `hidden` beta")) == [], "Removed code must not join phrases"
+    assert scan.en_phrases("alpha 中文 beta") == [], "English phrases cannot bridge Chinese passages"
     assert scan.en_phrases("alpha") + scan.en_phrases("beta") == [], "Files must tokenize independently"
     assert "深入" in scan.zh_ngrams("深入。深入") and "入深" not in scan.zh_ngrams("深入。深入")
+
+    formatting = ('In conclusion, results agree.\nIn **conclusion**, results agree.\n'
+                  'In \\emph{conclusion}, results agree.\nIn <em title="x > y">conclusion</em>, results agree.\n'
+                  'In _conclusion_, results agree.\nIn \\textbf{\\textit{conclusion}}, results agree.\n')
+    formatted = scan.clean_text(formatting)
+    assert len(formatted) == len(formatting), "Transparent formatting must preserve source offsets"
+    formatted_hits, _ = scan.lexical_candidates([(Path("formatting.md"), formatted)], lexicon, "en", "general", 20)
+    conclusion = next(hit for hit in formatted_hits if hit["id"] == "conclusion")
+    assert conclusion["count"] == 6 and [hit["line"] for hit in conclusion["occurrences"]] == [1, 2, 3, 4, 5]
+    assert scan.en_phrases(formatted).count("in conclusion") == 6
+    assert "深入" in scan.zh_ngrams(scan.clean_text("深**入**探索"))
+    assert scan.en_phrases(scan.clean_text("<p>alpha</p><p>beta</p>")) == [], "Block tags must separate paragraphs"
+
+    bibliography = r'''Bodybefore remains.
+\begin{thebibliography}{9}
+\bibitem{classicnoise} We delve into artifactnoise.
+\end{thebibliography}
+\section{After classic}
+Bodyafterclassic remains.
+\refsection{0}
+\datalist[entry]{nyt/global//global/global/global}
+\entry{biblatexnoise}{article}{}
+\field{title}{We delve into artifactnoise}
+\endentry
+\enddatalist
+\endrefsection
+\printbibliography[title={References}]
+\printbiblist[title={Short references}]{shorthandnoise}
+\parencite{parencitenoise} \textcite{textcitenoise} \autocites{autocitenoise}{secondcitenoise}
+\section{After biblatex}
+Bodyafterbiblatex remains.
+'''
+    bibliography_cleaned = scan.clean_text(bibliography)
+    bibliography_words = set(scan.en_words(bibliography_cleaned))
+    assert {"bodybefore", "bodyafterclassic", "bodyafterbiblatex"} <= bibliography_words
+    assert not {"delve", "thebibliography", "refsection", "datalist"} & bibliography_words
+    assert not any("noise" in word for word in bibliography_words), bibliography_words
+    assert scan.lexical_candidates([(Path("references.tex"), bibliography_cleaned)], lexicon, "en", "general", 20)[0] == []
+
+    citation_prose = scan.clean_text(r"Lead \cite{citationnoise} {\em In conclusion, results agree.} "
+                                    r"\parencite[see][p. 4]{othernoise} {Visible narrative.} Tail")
+    citation_words = set(scan.en_words(citation_prose))
+    assert {"lead", "conclusion", "results", "agree", "visible", "narrative", "tail"} <= citation_words
+    assert not any("noise" in word for word in citation_words), citation_words
+    assert "in conclusion" in scan.en_phrases(citation_prose), "Ordinary citations must not consume grouped prose"
 
     normalized = scan.excess_tables(Counter(alpha=2, beta=2), Counter(alpha=1, beta=1), 10, 1)
     assert all(row["ratio"] == 1 for row in normalized["seen"]), "Different corpus sizes need rates"
@@ -129,6 +176,35 @@ Appendix prose.
         assert any("无法读取" in warning for warning in result["warnings"])
         assert any("清洗后无正文" in warning for warning in result["warnings"])
         assert any("仅 2 个统计单位" in warning for warning in result["warnings"])
+
+        mixed = root / "mixed.md"
+        mixed.write_text("深入研究森林恢复。森林恢复需要长期监测。We delve into carbon turnover. Carbon turnover changes.", encoding="utf-8")
+        mixed_refs = root / "mixed-references"
+        mixed_refs.mkdir()
+        mixed_reference = mixed_refs / "mixed.txt"
+        mixed_reference.write_text("森林恢复。Carbon turnover changes.", encoding="utf-8")
+        code, report, error = run("--target", str(mixed), "--ref", str(mixed_refs), "--json", str(output), "--min-count", "1")
+        assert code == 0, error
+        result = json.loads(output.read_text(encoding="utf-8"))
+        assert result["scan_languages"] == ["zh", "en"]
+        assert {"zh", "delve", "carbon"} <= {hit["id"] for hit in result["lexical_candidates"]}
+        assert result["blocks"]["汉字二三元字组（并非分词）"]["n_ref"] == 5
+        assert result["blocks"]["英文单词"]["n_ref"] == 3
+        assert all(table["reference_files"] == [str(mixed_reference)] for table in result["blocks"].values())
+        assert "混合参照仅贡献相应语言的统计单位" in report
+        for language, expected in (("zh", {"zh"}), ("en", {"delve", "carbon"})):
+            code, _, error = run("--target", str(mixed), "--lang", language, "--ref", str(mixed_refs), "--json", str(output))
+            assert code == 0, error
+            result = json.loads(output.read_text(encoding="utf-8"))
+            assert result["scan_languages"] == [language]
+            assert {hit["id"] for hit in result["lexical_candidates"]} == expected
+            assert all(table["lang"] == language for table in result["blocks"].values())
+        mixed_reference.write_text("森林恢复。", encoding="utf-8")
+        code, _, error = run("--target", str(mixed), "--ref", str(mixed_refs), "--json", str(output))
+        assert code == 0, error
+        result = json.loads(output.read_text(encoding="utf-8"))
+        assert result["blocks"]["汉字二三元字组（并非分词）"]["baseline"]
+        assert not result["blocks"]["英文单词"]["baseline"] and "英文单词没有可用参照统计单位" in error
 
         empty_ref = root / "empty-ref"
         empty_ref.mkdir()

@@ -55,7 +55,7 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 
 ## 改稿示例
 
-前两例来自网友公开贴出的中文 ChatGPT 输出，原帖明确说明了生成来源；第三例来自用户提供的科技评论截图。
+前两例来自网友公开贴出的中文 ChatGPT 输出，原帖明确说明了生成来源；第三例为“什么值得买”官方的科技评论帖节选。
 
 ### 人文社科：合并重复判断
 
@@ -87,7 +87,7 @@ Blanboom 的 [L4S 生成记录](https://blanboom.org/2023/learning-l4s-with-chat
 
 ### 科技评论：去掉黑话与夸张表达
 
-来源：用户提供的科技评论截图节选。
+来源：“什么值得买”官方的科技评论帖节选。
 
 **原文节选**
 
@@ -177,4 +177,4 @@ flowchart TD
 - **[ARIES](https://github.com/allenai/aries)**：采用真实评审与段落修订的配对记录，分析具体改动及其依据。
 - **[arXivEdits](https://github.com/chaojiang06/arXivEdits)**：采用论文版本间的编辑与句子对齐记录，检查删改是否涉及实质含义。
 
-写作与编辑资源、公开论文版本、评审及职业编辑样稿的具体出处，见[来源与采用记录](references/sources.md)。README 的去 AI 味示例在各例中标明网友帖子及本项目改稿。第三方作品保留各自的权利和许可。
+写作与编辑资源、公开论文版本、评审及职业编辑样稿的具体出处，见[来源与采用记录](references/sources.md)。README 的改稿示例均在各例中注明来源与本项目改稿。第三方作品保留各自的权利和许可。

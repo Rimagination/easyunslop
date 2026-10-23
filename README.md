@@ -133,7 +133,17 @@ flowchart TD
 
 ## 任务范围
 
-EasyUnslop 接收已有文字，完成去 AI 味所需的措辞、句法与句段调整，并核对修改是否保留原意。论文题名、节标题、摘要和图注同样可以处理。
+EasyUnslop 接收已有文字，完成去 AI 味所需的措辞、句法与句段调整，并核对修改是否保留原意。论文题名、节标题、摘要和图注同样可以处理；也可以只诊断问题，暂不改稿。
+
+| 你的请求 | 如何处理 |
+| --- | --- |
+| “去掉这段的 AI 味”“减少机器腔” | 识别为相关请求；改稿所需的问题或方向尚未说明时，先问清再改。 |
+| “上一版太假、太官方、像模板，不像我写的” | 沿用当前对话中可见的上一稿，不要求重贴；修改方向不足时只问缺失项。 |
+| “只告诉我哪里有 AI 味，先别改” | 给出问题位置、文字依据和建议方向，保留有功能的专业表达，不输出改稿或生成概率。 |
+| 纯纠错、翻译、排版、摘要、扩缩写或风格模仿 | 没有去 AI 味要求时不自动介入；明确点名且只需轻校时遵守指定范围。 |
+| 从零写作、编写写作 prompt、研究审稿及代码、数据或图片任务 | 按原任务处理，不自动附加去 AI 味。混合任务仅处理明确需要编辑的自然语言。 |
+
+触发技能与开始改稿分开判断。只诊断可以直接进行；开始改稿前，仍须确认文本问题与修改方向。通过 AI 检测或降低检测分数不作为本技能的任务与效果指标。
 
 对可能夸大的目标与成果承诺，skill 会指出具体位置并询问修改方向。研究内容与目标的取舍由作者确认，skill 按确认范围编辑。
 
@@ -163,6 +173,7 @@ EasyUnslop 接收已有文字，完成去 AI 味所需的措辞、句法与句�
 
 - **[Humanizer-zh](https://github.com/op7418/humanizer-zh)**：参考文体优先的处理方式，保留正式程度、归因、必要限定及有功能的专业表达。
 - **[qu-ai-wei](https://github.com/LifelongLazyLearner/qu-ai-wei)**：参考编辑边界、症状与改法对应、作者声音及改后关系核对。
+- **[Doubao Human Signal](https://github.com/ahang1598/doubao-workbuddy-qwenwork-skills/tree/main/doubao/skills/doubao-human-signal)**：参考触发、不适用场景及只诊断入口的组织方式，保留 EasyUnslop 围绕已有文本和改稿前确认的范围。
 - **[academic-writing-refiner](https://github.com/Zihan-Zhu/academic-writing-refiner)**：参考按章节与写作场合选择表达，以及修改幅度适配的方法。
 - **[humanizer](https://github.com/blader/humanizer)**：参考常见 AI 表达模式、跨节套式、解释尾句和模糊权威的检查。
 - **[humanizer.tw](https://github.com/yelban/humanizer.tw)**：对照语气匹配与个性化表达的处理方式，按具体文体取舍。

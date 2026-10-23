@@ -17,6 +17,12 @@ easyunslop 从 scansci-write 的语言修订规则中抽出独立入口，新增
 
 这些项目中的若干版本已经正面处理“去 AI 味导致失去专业性”的问题。easyunslop 按具体文体保持专业程度，保护术语和逻辑；修改后先独立阅读改稿，再对照原文核查含义，并用实例说明何时应保留原句。
 
+## 触发条件与只诊断入口
+
+2026-10-23 参考公开仓库收录的 [Doubao Human Signal 2.2.9](https://github.com/ahang1598/doubao-workbuddy-qwenwork-skills/blob/main/doubao/skills/doubao-human-signal/SKILL.md)，重点核读其描述、Scope / Trigger 与诊断输出规则。
+
+采用“触发场景—不自动触发与不适用场景”的组织方式，把用户对上一稿的自然反馈与只诊断请求写进入口。EasyUnslop 继续围绕已有文本，不扩展到该项目的从零创作、写作 prompt 或评分流程。只诊断按具体文字列问题和建议，不判定生成身份；触发后仍保留用户要求的改稿前确认与实质调整授权。
+
 ## 公开资源补充：从基础清理到表达精修
 
 2026-10-22 补充核读如下资源，形成 [编辑模式库](editing-patterns.md) 及编辑实例第 10–14 例。实例由本项目编写，属于虚构教学文本，未冒充来源作者或真实论文的改稿。

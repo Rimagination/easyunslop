@@ -1,4 +1,4 @@
 interface:
-  display_name: "easyunslop · 学术表达精修"
-  short_description: "精修论文与专业文字中的模板化表达，保留原意、术语、证据强度和学术语域"
-  default_prompt: "请用 $easyunslop 润色以下文字。若我尚未说明文本的问题或修改方向，请先询问，收到答复后再改；保留原意、术语与证据强度，涉及研究目标或成果承诺的实质调整先征求我的确认。"
+  display_name: "easyunslop · 去AI味"
+  short_description: "去除中英文稿件的 AI 味，支持只诊断，保留原意、术语、专业程度和作者风格"
+  default_prompt: "请用 $easyunslop 处理以下已有文字的 AI 味。只诊断时列出具体问题与建议，不改稿；需要改稿而我尚未说明文本问题或修改方向时，先询问再改。保留原意、术语与证据强度，研究目标或成果承诺的实质调整先征求我的确认。"

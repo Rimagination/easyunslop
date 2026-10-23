@@ -55,35 +55,35 @@ git clone https://github.com/Rimagination/easyunslop.git easyunslop
 
 ## 改稿示例
 
-下面两例均来自网友公开贴出的 ChatGPT 输出，帖子中有明确的生成说明和上下文。保留英文原段落，直接用 EasyUnslop 改英文，便于对照。
+下面两例均选自网友公开贴出的中文 ChatGPT 输出，来源页面明确说明了生成过程。原文按来源节选，EasyUnslop 改稿与具体改动列在其后。
 
-### 人文社科·教育评论：把反复提醒改为直接论述
+### 人文社科·教育与就业：合并重复判断
 
-来源：[r/ChatGPT 的教育讨论帖](https://www.reddit.com/r/ChatGPT/comments/101els1/what_will_chatgpt_do_to_education/)。发帖者 Seaworthiness-Any 贴出提示词，并明确说明随后文字由 ChatGPT 生成。以下节选自其中讨论记者、教师工作替代问题的一段。
-
-**网友贴出的 ChatGPT 原文（节选）**
-
-> However, it is important to consider the limitations of these models, as well as the ethical implications of replacing human workers with machines. While it may be possible for language models to perform certain tasks that are currently done by journalists and teachers, it is important to consider the potential consequences of such a shift, such as job loss and the impact on the quality and accuracy of the content that is produced.
-
-**EasyUnslop 改稿**
-
-> Language models may perform some tasks currently done by journalists and teachers. Replacing these workers calls for consideration of the models’ limitations, the ethical implications, and potential consequences such as job loss and effects on the quality and accuracy of the content produced.
-
-压缩两次“it is important to consider”和迂回的能力表述，直接交代任务能力与替代问题。保留“may”“some”及原文提出的模型限制、伦理、失业和内容质量问题。
-
-### 理工科·能源技术讨论：去掉回应式赞许，保留评价范围
-
-来源：[r/HydrogenSocieties 的氢燃料电池与电池讨论帖](https://www.reddit.com/r/HydrogenSocieties/comments/184hdtp/wanted_to_share_a_conversation_i_had_with_chatgpt/)。发帖者 respectmyplanet 逐轮贴出自己的问题与 ChatGPT 回答。以下为最后一轮 ChatGPT 回答的首段。
+来源：[网友分享的学历与就业讨论](https://www.reddit.com/r/China_irl/comments/1pdw2mv/)。发帖者 TimelyDiscipline8159 明确说明让 ChatGPT 回答了三次，并逐次贴出全文。以下节选自第三次回答的“1. 学历的价值”。
 
 **网友贴出的 ChatGPT 原文（节选）**
 
-> Your points highlight the importance of considering the entire life cycle and supply chain of technologies when evaluating their environmental impact and efficiency. It's clear that a comprehensive assessment of the environmental footprint of energy storage and conversion technologies should include the entire process from raw material extraction to end-of-life disposal.
+> 然而，学历提升并不总是等于更好的就业前景。对于绝大多数行业，尤其是商业和技术领域，企业更看重的是实际工作能力和经验，而不仅仅是学历。很多时候，企业招聘时并不单纯依赖学历，而是更看重求职者的工作能力、实战经验以及是否能快速融入团队和公司文化。
 
 **EasyUnslop 改稿**
 
-> Assessments of the environmental footprint and efficiency of energy storage and conversion technologies should cover their full life cycle and supply chain, from raw material extraction to end-of-life disposal.
+> 学历提升并不总是等于更好的就业前景。在绝大多数行业，尤其是商业和技术领域，企业招聘时往往更看重求职者的实际工作能力与经验，以及能否快速融入团队和公司文化。
 
-移除“Your points highlight”“It's clear”等对话式包装，合并重复强调。储能与能量转换技术、环境足迹与效率、全生命周期、供应链及评价起止范围均保留。
+合并两次“更看重能力与经验”的重复表述。保留就业前景、招聘偏好、行业范围及团队适应等信息，“并不总是”“往往”继续限定判断。
+
+### 理工科·网络技术：直接陈述技术特性
+
+来源：[Blanboom 公开分享的 L4S 生成记录](https://blanboom.org/2023/learning-l4s-with-chatgpt/)。作者说明自己让 ChatGPT 生成介绍 L4S 的电子书，并公开了提示词、生成正文和对话链接。以下节选自首次生成结果的技术介绍部分。
+
+**网友贴出的 ChatGPT 原文（节选）**
+
+> L4S的另一个重要特性是其可扩展的拥塞控制算法，它允许在高速网络中保持高吞吐量。
+
+**EasyUnslop 改稿**
+
+> L4S 采用可扩展的拥塞控制算法，可在高速网络中保持高吞吐量。
+
+把“另一个重要特性是其……”改为直接陈述。保留“可扩展的拥塞控制算法”“高速网络”“高吞吐量”，以及原文表示能力的语气。
 
 更多专业表达的保留条件与误改复盘，见[33条编辑实例](references/editing-examples.md)。这些实例分别标注自编材料、实际项目改稿及公开修订来源。
 

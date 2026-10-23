@@ -7,65 +7,15 @@
 </p>
 <p align="center">
   <a href="#一分钟开始"><img alt="Input: drafts" src="https://img.shields.io/badge/INPUT-DRAFTS-789788?style=for-the-badge&amp;labelColor=555555"></a>
-  <a href="#改稿示例"><img alt="Output: scholarly prose" src="https://img.shields.io/badge/OUTPUT-SCHOLARLY_PROSE-293A39?style=for-the-badge&amp;labelColor=555555"></a>
-  <a href="#适用范围"><img alt="Language: Chinese and English" src="https://img.shields.io/badge/LANGUAGE-ZH_%2B_EN-B48B64?style=for-the-badge&amp;labelColor=555555"></a>
+  <a href="#改稿示例"><img alt="Output: natural prose" src="https://img.shields.io/badge/OUTPUT-NATURAL_PROSE-293A39?style=for-the-badge&amp;labelColor=555555"></a>
+  <a href="#任务范围"><img alt="Language: Chinese and English" src="https://img.shields.io/badge/LANGUAGE-ZH_%2B_EN-B48B64?style=for-the-badge&amp;labelColor=555555"></a>
 </p>
 
 # EasyUnslop
 
-EasyUnslop 帮助你润色已有的中英文论文和专业文本：删去空泛套话，理顺句子和段落，让读者更容易理解你的主张及其依据。编辑范围包括论文题名、各级节标题、摘要、正文，以及所提供的图注和表注。
+EasyUnslop 是一个用于**去除中英文文本中 AI 味**的 skill。它从已有稿件出发，清理套话、黑话、机械铺陈和生硬表达，让文字读起来自然，同时保留原意、专业术语和作者风格。
 
-修改从原稿和你提供的上下文出发。句子可以重写，段落可以在授权范围内重新安排；专业术语、研究结论、必要限定和作者声音随改稿一并核对。已经清楚、自然的文字可以保留。
-
-## 编辑方法
-
-### 围绕读者理解修改
-
-去掉 AI 腔之后，句子仍可能主干不清、修饰含混，段落也可能缺少承接。EasyUnslop 会继续处理这些问题：让条件靠近所限定的内容，让比较沿同一维度展开，让每段承担清楚的任务。词句模式、词汇报告与案例提供检查线索，是否改动取决于具体语境。
-
-### 充分改写表达，逐项核对含义
-
-改善表达的同时，核对作者说了什么、凭什么这样说。例如，“控制水深后呈负相关”须保留模型条件与关联性质；“每周提交比例”须保留统计窗口；数学命题中的量词次序、规范论证中的“应当”，也须在改写中保留。技术信息可以换位置、另成句，核对范围包括主张、条件、数字口径、动作状态和引用归属。
-
-### 先组织信息，再精修句子
-
-全文编辑先看各节如何推进核心问题，再处理段落与语句。长稿结构难跟随时，先用简短的反向提纲概括各段主题与职责，找出前提出现过晚、非相邻段落重复等问题。在同一节内，可以调整句序、分合相邻段落、合并重复说明；跨节重排遵照你的结构编辑要求。摘要、结果与讨论对同一发现承担不同任务，按用途保留必要重复。
-
-文献段根据所给研究的问题、方法或结果组织共同点和分歧，保留各自条件与引用。正文与图表也有分工：正文交代关键比较，图注和表注利用已有材料说明对象、单位、符号和误差含义。编辑长稿时，记录术语、数值口径和前后关联，完成后检查题名、摘要、正文与结论的对应。
-
-### 根据学科和文体保留表达
-
-专业术语、缩写、被动句、名词化和长句按用途保留。中文检查搭配、指代与信息承接；英文还结合实际指称校改冠词、可数性、修饰结构和时态。句间衔接优先靠清楚的主题与关系，连接词按需使用。
-
-原稿中写得好的段落和你提供的样稿，可以作为语气、人称及展开方式的参照。改稿保留作者已有的批评、让步、规范要求与合理强调，结尾也沿着已有论述收束。样稿中的事实、观点和引文留在样稿中。
-
-### 用词频与词库定位需要检查的表达
-
-全文润色在初改前扫描稿内高频词、重复词组和[AI倾向词与常见表达候选库](references/lexical-signals.json)。报告给出次数、位置、上下文和保留条件；有同语言、同文体的参照稿时，还会比较归一化频率，帮助发现异常集中的用词。混合稿分别统计中英文：中文使用二三元字组，英文统计实词及二三元词组。常见行内强调保留词组连续，代码、公式与参考文献从正文统计中剔除。
-
-主编辑据此检查重复、空泛修饰和不准确的搭配，再作修改。`robust regression`、系统性误差、闭环控制等专业表达按含义保留。词库分别标注文献研究、社区观察、本地记录和编辑模式；模型标签保留原有研究或观察范围。修改后复扫相关候选，再核对上下文，具体用法见[词汇诊断](references/lexical-diagnostics.md)。
-
-这些方法结合了专业编辑中的原意与语域保持、科学写作中的读者预期，以及写作认知研究中的规划、表达与复核。具体来源见[方法依据](#方法依据)和[采用记录](references/sources.md)。
-
-## 全文如何分轮协作
-
-**一位主编辑统稿，两位检查者分别关注表达与原意。** 在支持子代理的环境中，全文润色默认执行以下流程：
-
-```mermaid
-flowchart TD
-    S["主编辑：通读原稿与词汇扫描"] --> A["完成同一版整稿初改"]
-    A --> B["表达检查：先只读改稿"]
-    A --> C["保义检查：先读原稿，再对照改稿"]
-    B --> D["主编辑：核对建议，统一修改"]
-    C --> D
-    D --> E["定向核对新改动，交付完整稿"]
-```
-
-两位检查者在独立上下文中检查同一版整稿，先不接收主编辑的修改理由或对方意见。表达检查者寻找阅读障碍、段落跳跃和生硬压缩；保义检查者核对含义、术语、数据、限定、引用及文档结构。
-
-表达检查者完成独立阅读后，再结合词汇候选检查遗漏的重复。检查意见需要指出具体位置、问题和依据。主编辑回查稿件是否已有答案：答案位置难找时改善承接，答案清楚时可以说明依据后保留原文。主编辑决定采纳、调整后采纳或不采纳，统一全文声音，再核对新改动及关联段落。具体问题解决后就交付。
-
-**短段、单个标题和轻度校改默认由同一编辑者完成。** 你的协作要求优先；只能同时启动一位检查者时，依次进行表达检查和保义检查；没有代理工具时，由主编辑依次完成单读改稿与原文对照。日常使用默认只收到一份完整改稿，对照与理由可另行要求。详细交接和停止条件见[分轮编辑与协作](references/editorial-workflow.md)。
+论文、专业报告、技术说明和其他已有文本都可以处理。生硬句子可以重写，无信息的重复可以合并。改写后对照原文核对专业含义与判断力度，原本写得好的地方可以保留。
 
 ## 一分钟开始
 
@@ -76,143 +26,129 @@ flowchart TD
 https://github.com/Rimagination/easyunslop
 ```
 
-提供整篇稿件时，可以这样调用：
+然后提供想修改的文字：
 
 ```text
-请用 $easyunslop 润色这篇论文，包括题名、各级节标题、摘要与正文。
-可以在同一节内调整句序和分合段落，保持专业含义、证据强度与作者风格。
-直接给出完整改稿。
+请用 $easyunslop 去除下面文字的 AI 味。
+保留原意、专业术语、证据强度与作者风格，保持原有的专业程度。
+可以改写生硬句子、合并重复表达。直接给出改稿。
 
-[粘贴稿件或提供文件]
+[粘贴文字或提供文件]
 ```
 
-只想轻校一段文字时：
-
-```text
-请用 $easyunslop 对以下段落做轻度校改，保留句序、专业术语和原有判断。
-清楚的句子可以保留。直接给出改稿。
-
-[粘贴段落]
-```
-
-你也可以单独请求修改标题或摘要。提供相关正文，有助于准确判断标题范围和摘要重点；提供同文体的参考稿，可以参照作者声音并比较词频。需要了解取舍时，可要求“列出主要改动及简短理由”。
+可以指定只改一段，也可以提供整篇稿件，包括题名、节标题、摘要、正文及图表说明。需要了解取舍时，再要求列出主要改动；只想轻校时，说明保留句序和段落组织即可。
 
 <details>
-<summary>手动安装</summary>
+<summary>手动安装与更新</summary>
 
-进入所用工具实际读取的 skills 目录，执行：
+在所用 Agent 实际读取的 skills 目录中执行：
 
 ```sh
 git clone https://github.com/Rimagination/easyunslop.git easyunslop
 ```
 
-安装后的 `easyunslop` 文件夹应直接包含 `SKILL.md`、`agents/` 和 `references/`。若 Codex 设置了自定义 `CODEX_HOME`，请使用该路径下的 `skills` 目录。其他工具请确认其技能目录。
+安装后的 `easyunslop` 文件夹直接包含 `SKILL.md`、`agents/`、`references/` 和 `scripts/`。通过克隆安装的用户，可在该目录执行 `git pull` 更新。
 
-通过克隆安装的已有用户，可在技能目录中执行 `git pull` 获取后续更新。词汇扫描使用现有Python 3和标准库，无需第三方包。环境没有Python时，编辑仍可按词库和模式完成；工具统计的使用方式见[词汇诊断](references/lexical-diagnostics.md)。
+词汇扫描使用 Python 3 标准库，无需第三方包。没有 Python 时，仍可按词库、模式和原文完成编辑。具体用法见[词汇诊断](references/lexical-diagnostics.md)。
 
 </details>
 
 ## 改稿示例
 
-下面两例取材于公开的学位论文编辑样稿与期刊论文。先呈现原段落的中文节选译述，再给出 EasyUnslop 对译述的改稿；英文原文可循来源链接核对。
+下面两例均来自网友公开贴出的 ChatGPT 输出，帖子中有明确的生成说明和上下文。保留英文原段落，直接用 EasyUnslop 改英文，便于对照。
 
-### 人文社科：明确叙述主体，理顺机构与人的关系
+### 人文社科·教育评论：把反复提醒改为直接论述
 
-来源：Borjana Lubura 的民族志博士论文 *Altermobilites: Everyday Life on the Move in the Western Balkans*（2022），[Revise & Resubmit 公开编辑样稿](https://www.reviseandresubmit.com/paper-edit-samples)的 Before (Ethnographic)，见民族志原稿中关于机构联络作用的句子。
+来源：[r/ChatGPT 的教育讨论帖](https://www.reddit.com/r/ChatGPT/comments/101els1/what_will_chatgpt_do_to_education/)。发帖者 Seaworthiness-Any 贴出提示词，并明确说明随后文字由 ChatGPT 生成。以下节选自其中讨论记者、教师工作替代问题的一段。
 
-**原段落的中文节选译述**
+**网友贴出的 ChatGPT 原文（节选）**
 
-> 这个组织是新到者的第一接触点，它（Info Park）在迁移者与国家之间发挥联络作用，传递公园里有多少人，以及这些人在不同时刻有什么需求的信息。
-
-**EasyUnslop 改稿**
-
-> Info Park 是新到者的第一接触点，也是迁移者与国家之间的纽带。该组织传递公园内的人数及迁移者当时的需求。
-
-让机构名称承担段落主语，先交代角色，再说明传递的内容，省去插入语与重复指代。迁移者、国家及两类信息之间的关系保留。这里展示的是本项目对中文译述的编辑，源页另列有职业编辑的英文改稿。
-
-### 理工科·地球与环境：区分观测指标与推算所需条件
-
-来源：Letulle 等（2023），[*Biogeosciences* 论文](https://bg.copernicus.org/articles/20/1381/2023/)摘要开头两句，原论文采用 CC BY 4.0 许可。
-
-**原段落的中文节选译述**
-
-> 我们对过去海水温度历史的大部分认识，是基于碳酸钙质化石壳体的 δ¹⁸O 值。然而，用这一代用指标推算过去的温度，需要知道过去海水的 δ¹⁸O 值，而后者通常缺乏充分约束。
+> However, it is important to consider the limitations of these models, as well as the ethical implications of replacing human workers with machines. While it may be possible for language models to perform certain tasks that are currently done by journalists and teachers, it is important to consider the potential consequences of such a shift, such as job loss and the impact on the quality and accuracy of the content that is produced.
 
 **EasyUnslop 改稿**
 
-> 碳酸钙质化石壳体的 δ¹⁸O 值，是认识古海水温度历史的主要依据。用这一代用指标推算温度，还需要知道同期海水的 δ¹⁸O 值；后者通常缺乏充分约束。
+> Language models may perform some tasks currently done by journalists and teachers. Replacing these workers calls for consideration of the models’ limitations, the ethical implications, and potential consequences such as job loss and effects on the quality and accuracy of the content produced.
 
-先交代观测指标，再说明推算温度所需的海水参数。壳体与海水的 δ¹⁸O 各有所指，“主要依据”“通常”等限定保留。
+压缩两次“it is important to consider”和迂回的能力表述，直接交代任务能力与替代问题。保留“may”“some”及原文提出的模型限制、伦理、失业和内容质量问题。
 
-更多改稿、原句保留及误改复盘，见[33条编辑实例与失败复盘](references/editing-examples.md)；自编模拟稿的完整前后对照见[整稿试用记录](docs/comprehensive-trial-20261023.md)。
+### 理工科·能源技术讨论：去掉回应式赞许，保留评价范围
 
-## 适用范围
+来源：[r/HydrogenSocieties 的氢燃料电池与电池讨论帖](https://www.reddit.com/r/HydrogenSocieties/comments/184hdtp/wanted_to_share_a_conversation_i_had_with_chatgpt/)。发帖者 respectmyplanet 逐轮贴出自己的问题与 ChatGPT 回答。以下为最后一轮 ChatGPT 回答的首段。
 
-| 稿件或任务 | 编辑重点 |
+**网友贴出的 ChatGPT 原文（节选）**
+
+> Your points highlight the importance of considering the entire life cycle and supply chain of technologies when evaluating their environmental impact and efficiency. It's clear that a comprehensive assessment of the environmental footprint of energy storage and conversion technologies should include the entire process from raw material extraction to end-of-life disposal.
+
+**EasyUnslop 改稿**
+
+> Assessments of the environmental footprint and efficiency of energy storage and conversion technologies should cover their full life cycle and supply chain, from raw material extraction to end-of-life disposal.
+
+移除“Your points highlight”“It's clear”等对话式包装，合并重复强调。储能与能量转换技术、环境足迹与效率、全生命周期、供应链及评价起止范围均保留。
+
+更多专业表达的保留条件与误改复盘，见[33条编辑实例](references/editing-examples.md)。这些实例分别标注自编材料、实际项目改稿及公开修订来源。
+
+## 它会处理哪些 AI 味
+
+| 常见表现 | 编辑动作 |
 | --- | --- |
-| 中英文论文、学位论文 | 题名、节标题、摘要与正文的表达及相互对应 |
-| 经验研究与计算研究 | 比较对象、模型条件、统计口径、观测与推断的区别 |
-| 理论、形式与规范论证 | 概念边界、量词、否定范围、推理层次和判断强度 |
-| 人文阐释与专业评论 | 观点归属、引语、分析视角、段落推进和作者声音 |
-| README 与其他专业说明 | 读者需要先知道什么，功能是否具体，开头与段落是否顺畅 |
-| LaTeX 与 Markdown 稿件 | 润色标题、图注和正文中的自然语言，保持公式、引用键、标签、链接目标与代码完整 |
+| 宏大背景、空泛开场、反复宣称意义 | 进入原稿已有主题，压缩没有新增信息的铺垫与评价。 |
+| “赋能”“抓手”“深度洞察”等词代替具体内容 | 从原文找出实际功能、动作和对象，写清楚它们。 |
+| 同一判断换词复述，每段都统一拔高 | 比较各处有没有新信息和新任务，合并无作用的重复。 |
+| 机械转折、排比凑数、相同的开头与结尾 | 按原有逻辑调整句段，让每句承担实际任务。 |
+| 句子生硬、指代漂移、修饰语与对象错位 | 重写妨碍理解的句法，理顺搭配与承接。 |
+| “根据你的要求”“你的观点凸显了”等聊天残留 | 在成稿中直接表达实质内容。真实引语及研究材料按其身份保留。 |
 
-编辑依据是已有稿件及所提供的上下文。补充文献、研究设计和事实核验属于另外的任务；影响解释的既有研究限制随相关主张保留。材料未提供某项检验时，不据此写成“本研究未进行该检验”。
+词表命中和句式相似都只是检查线索。`robust regression`、系统性误差、闭环控制等术语，以及必要的被动句、名词化和长句，按用途保留。详细取舍见[编辑模式库](references/editing-patterns.md)。
 
-## 案例与方法依据
+## 怎样在去 AI 味时保持质量
 
-### 从具体修订中学习取舍
+**先确认表达有什么问题。** 结合读者、文体和上下文判断，找到空泛、重复、机械或生硬的具体位置，再决定改法。术语变少、句子变短、词库清零都不能单独说明改好了。
 
-[真实论文案例库](references/real-editing-cases.md)收录10篇论文的公开版本、评审或作者回复，覆盖教育、神经科学、计算机科学、数学、语言学，以及地球与环境领域的海洋碳循环、古海洋地球化学。案例用于说明怎样判断概念范围、信息位置、符号解释、比较对象及时间尺度。
+**充分改写句法，逐项核对含义。** 条件、量词、否定范围、数字口径、引用归属与作者立场随实际改动检查。“相关”保留关联性质，“应当”保留规范力度，计划继续写成计划；批评、让步和合理强调按原意保留。
 
-另有[5组原稿—改稿对照](references/editorial-pairs.md)，区分职业编辑稿、专家建议、改编教学例和作者实际修订。来源已说明的理由与本项目分析分别标注，建议稿保留其原始身份。
+**读完整句段，再用统计查漏。** 全文处理会扫描高频词、重复词组和[候选词库](references/lexical-signals.json)，结合上下文选择修改。中英文混合稿分别统计；有同语言、同文体参照时，可比较归一化频率。词库区分文献研究、社区观察和本地编辑记录，具体范围见[词汇诊断](references/lexical-diagnostics.md)。
 
-### 方法依据
+## 全文处理流程
 
-| 依据 | 在 EasyUnslop 中的采用方式 |
-| --- | --- |
-| [Editors Canada：专业编辑标准](https://editors.ca/wp-content/uploads/2024/05/EditorsCanada_ProfessionalEditorialStandards_2024.pdf) | 根据受众、任务与修改幅度编辑，保持原意、作者声音和语域。 |
-| [Gopen 与 Swan：科学写作与读者预期](https://www.ugrad.stat.ubc.ca/~nancy/writing/gopen_swan.pdf) | 处理主干、修饰范围、上下文与信息重心，使专业内容更容易理解。 |
-| [Flower 与 Hayes：写作的认知过程](https://publicationsncte.org/content/journals/10.58680/ccc198115885) | 按具体问题调用规划、表达和复核；发现问题时回到对应层次修改。 |
-| [Purdue OWL](https://owl.purdue.edu/owl/general_writing/academic_writing/conciseness/index.html) 与 [Academic Phrasebank](https://www.phrasebank.manchester.ac.uk/about-academic-phrasebank/) | 删去冗余，同时保留承担实际交际功能的学术表达。 |
-| [Wisconsin：反向提纲](https://writing.wisc.edu/handbook/processandstructure/reverseoutlines/)、[George Mason：信息承接](https://writingcenter.gmu.edu/writing-resources/grammar-style/improving-cohesion-the-known-new-contract) | 检查段落职责、前提位置与句间主题，区分必要复现和无信息重复。 |
-| [George Mason：学术时态](https://writingcenter.gmu.edu/writing-resources/grammar-style/the-three-common-tenses-used-in-academic-writing)与[ICMJE：稿件准备](https://www.icmje.org/recommendations/browse/manuscript-preparation/preparing-for-submission.html) | 按论述功能检查时态，用已有材料明确图表说明；学科格式按各自要求执行。 |
-| [多模型讨论的理论研究](https://proceedings.neurips.cc/paper_files/paper/2024/hash/32e07a110c6c6acf1afbf2bf82b614ad-Abstract-Conference.html) | 相近模型可能共享误解，因此要求检查者给出文字依据，由主编辑核实建议。 |
-| [Juzek与Ward：词汇过度代表](https://aclanthology.org/2025.coling-main.426/)与[超额词研究的原始项目](https://github.com/berenslab/llm-excess-vocab) | 以词频和重复词组定位候选，保留研究范围，再回到句段判断是否需要修改。 |
+一位主编辑统稿，表达与原意分别检查。整篇稿件在支持子代理的环境中采用以下流程：
 
-这些研究为设计提供参考。全文协作通过不同材料和阅读任务改变检查重点，其实际作用记录在具体改稿中。
+```mermaid
+flowchart TD
+    A["读取原稿与词汇扫描"] --> B["主编辑：去除 AI 味，完成初改"]
+    B --> C["表达检查：先只读改稿"]
+    B --> D["原意核对：对照原稿与改稿"]
+    C --> E["主编辑整合并定向核对，交付成稿"]
+    D --> E
+```
 
-## 更新与验证记录
+两位检查者在独立上下文中处理同一版稿件，先不接收主编辑理由或彼此意见：一位检查文字是否自然、连贯，另一位检查改写是否改变含义。主编辑核实具体意见后统一修改，避免多轮润色改变作者风格。
 
-2026-10-23的更新完成了13项编辑行为核对，并实际试跑全文协作、英文短段轻校和模拟无代理工具三条路径。全文试跑落实三处后续修改；英文轻校保留了全部四句；最终综合检查未发现影响交付的问题。各项材料身份及结果见[更新与试用记录](docs/workflow-update-20261023.md)。
+短段、单个标题和轻度校改默认由同一编辑者完成。没有子代理工具时，依次读改稿、对照原文；具体问题解决后交付。详细交接见[分轮编辑与协作](references/editorial-workflow.md)。
 
-随后接入词汇扫描，新增工具自检和一次独立使用试跑。执行者按新版技能实际扫描原稿与改稿，修改了`utilized`、`delve`所在的句子及重复评价，保留了`robust regression`、`systematic error`及全部数据和条件。原稿、改稿与候选取舍见[词汇诊断验证记录](docs/lexical-validation-20261023.md)。
+## 任务范围
 
-早期的[四例无技能／有技能对照](docs/transfer-evaluation.md)保留了原输出与匿名代理评阅，后续复核撤回了其中一例的原评价，并将问题用于修正规则。历史记录与更正一并保留。
+EasyUnslop 接收已有文字，完成去 AI 味所需的措辞、句法与句段调整，并核对修改是否保留原意。论文题名、节标题、摘要和图注同样可以处理。
 
-本次综合补充接入反向提纲、信息承接、英文语法与时态、图注分工和立场核对等方法，新增8个教学例，并修复混合语言和常见格式的统计遗漏。新版已实际用于中文行政法论证及英文地球环境稿，原稿、终稿和执行情况见[综合补充与验证](docs/comprehensive-update-20261023.md)。
+**选题与研究设计、从零撰写论文、补充文献或实验、事实核验、学术审稿，不属于本 skill 的任务。** 表达检查和原意核对服务于改稿质量；研究是否成立、论据是否充分等问题，由相应的研究与审稿任务判断。
 
-质量判断关注含义是否保持、既有信息是否更易理解、清楚的原句是否得到保留。公开论文修订、实际改稿和作者或读者反馈都能提供依据；AI检测分数、删词数量和代理的一致意见不作质量结论。
-
-## 项目文档
+## 案例、来源与验证记录
 
 | 文档 | 内容 |
 | --- | --- |
-| [SKILL.md](SKILL.md) | 入口、任务范围、内容约束和编辑判断 |
-| [分轮编辑与协作](references/editorial-workflow.md) | 分工、交接材料、意见整合、工具适配与停止条件 |
-| [词汇诊断](references/lexical-diagnostics.md)与[候选词库](references/lexical-signals.json) | 高频词、重复词组、参照词频、上下文及保留条件 |
-| [编辑模式库](references/editing-patterns.md) | 词句、比较关系、信息次序与段落组织的具体处理 |
-| [编辑实例与失败复盘](references/editing-examples.md) | 33条实例，包含结构、衔接、语法、标题、图注及常见误改 |
-| [真实论文修订](references/real-editing-cases.md) | 10篇公开论文的版本、来源、定位与适用条件 |
-| [原稿—改稿对照](references/editorial-pairs.md) | 5组短对照、修改理由和容易改坏的写法 |
-| [来源与采用记录](references/sources.md) | 参考项目、专业编辑资源和采用范围 |
-| [本轮更新与试用](docs/workflow-update-20261023.md) | 集中修订、全文协作及轻量分支的实际记录 |
-| [词汇诊断验证](docs/lexical-validation-20261023.md) | 工具自检、真实调用记录及模拟稿前后对照 |
-| [综合补充与验证](docs/comprehensive-update-20261023.md) | 专业写作方法、AI写作偏差、格式与混合语言修复及本轮实际试用 |
-| [早期验证记录](docs/validation.md) | 初始版本检查及后续修订索引 |
+| [SKILL.md](SKILL.md) | 去 AI 味的任务范围、编辑顺序与内容约束 |
+| [编辑模式库](references/editing-patterns.md)与[编辑实例](references/editing-examples.md) | 按语境改写、保留专业表达及常见误改 |
+| [词汇诊断](references/lexical-diagnostics.md)与[候选词库](references/lexical-signals.json) | 重复统计、候选位置、来源与保留条件 |
+| [分轮编辑与协作](references/editorial-workflow.md) | 表达检查、原意核对与主编辑整合 |
+| [真实论文修订](references/real-editing-cases.md)与[原稿—改稿对照](references/editorial-pairs.md) | 专业编辑取舍的参照，各自保留来源身份 |
+| [来源与采用记录](references/sources.md) | 社区项目、写作资源与研究依据的采用范围 |
+| [综合补充与验证](docs/comprehensive-update-20261023.md) | 方法接入、工具修复与整稿试用 |
+| [整稿试用](docs/comprehensive-trial-20261023.md)与[词汇诊断验证](docs/lexical-validation-20261023.md) | 原稿、实际改稿与执行记录 |
+| [早期无技能／有技能对照](docs/transfer-evaluation.md) | 历史输出、匿名代理评阅及后续更正 |
+
+编辑效果看文字是否更自然、既有信息是否更易理解，以及含义和专业程度是否保持。案例和执行记录用于呈现具体取舍，不以 AI 检测分数、删词数量或代理一致意见作效果排名。
 
 ## 来源与致谢
 
-EasyUnslop 由 scansci-write 的语言修订规则整理而来，并参考了 [Humanizer-zh](https://github.com/op7418/humanizer-zh)、[qu-ai-wei](https://github.com/LifelongLazyLearner/qu-ai-wei)、[academic-writing-refiner](https://github.com/Zihan-Zhu/academic-writing-refiner)、[humanizer](https://github.com/blader/humanizer)、[humanizer.tw](https://github.com/yelban/humanizer.tw)、[stop-slop](https://github.com/hardikpandya/stop-slop) 和 [anti-defensive-writing](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill) 等社区项目。
+EasyUnslop 从 scansci-write 的语言修订规则整理而来，参考了 [Humanizer-zh](https://github.com/op7418/humanizer-zh)、[qu-ai-wei](https://github.com/LifelongLazyLearner/qu-ai-wei)、[academic-writing-refiner](https://github.com/Zihan-Zhu/academic-writing-refiner)、[humanizer](https://github.com/blader/humanizer)、[humanizer.tw](https://github.com/yelban/humanizer.tw)、[stop-slop](https://github.com/hardikpandya/stop-slop) 和 [anti-defensive-writing](https://github.com/Adkid-Zephyr/anti-defensive-writing-Skill) 等项目。
 
-公开修订材料来自 ARIES、arXivEdits，以及 F1000Research、eLife、ESSD、Biogeosciences 等论文版本与评审记录。具体来源及取舍见[采用记录](references/sources.md)。第三方作品保留各自的权利和许可，完整原文请访问原始来源。
+专业修订材料来自 ARIES、arXivEdits 及公开论文版本、评审和编辑样稿，用于学习保持概念、条件与专业语域的方法。README 中的去 AI 味示例则注明网友贴出的生成文本及本项目改稿。具体出处见[来源记录](references/sources.md)，第三方作品保留各自的权利和许可。
